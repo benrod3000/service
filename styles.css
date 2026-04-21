@@ -288,15 +288,15 @@ section {
 }
 
 .about-photo-block {
-  aspect-ratio: 3/4;
+  max-width: 420px;
   border-radius: 16px;
   overflow: hidden;
 }
 
 .about-photo-block img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: center top;
   display: block;
 }
