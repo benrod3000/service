@@ -523,7 +523,7 @@ img {
    CTA
 ====================== */
 .cta {
-  background: var(--accent);
+  background: #111111;
   padding: 140px 40px;
   position: relative;
   overflow: hidden;
@@ -550,19 +550,19 @@ img {
 
 .cta p {
   font-size: 1.1rem;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 40px;
 }
 
 .cta .btn {
-  background: #fff;
-  color: var(--accent);
-  border-color: #fff;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
 .cta .btn:hover {
-  background: var(--text);
-  border-color: var(--text);
+  background: #ea6500;
+  border-color: #ea6500;
   color: #fff;
 }
 
