@@ -3,14 +3,6 @@
 ========================= */
 const progressBar = document.querySelector(".progress-bar");
 
-if (progressBar) {
-  window.addEventListener("scroll", () => {
-    const scrolled = window.scrollY;
-    const total = document.body.scrollHeight - window.innerHeight;
-    progressBar.style.width = `${(scrolled / total) * 100}%`;
-  });
-}
-
 /* =========================
    SCROLL REVEALS
 ========================= */
@@ -116,32 +108,53 @@ const phrases = [
 
 let phraseIndex = 0;
 
-window.addEventListener("scroll", () => {
-  const scroll = window.scrollY;
-
-  if (scroll > 200 && phraseIndex === 0) {
-    heroTitle.textContent = phrases[1];
-    phraseIndex = 1;
-  }
-
-  if (scroll > 500 && phraseIndex === 1) {
-    heroTitle.textContent = phrases[2];
-    phraseIndex = 2;
-  }
-});
-
 /* =========================
    SYSTEM COMPACT MODE
 ========================= */
 const system = document.querySelector(".system");
 const servicesSection = document.querySelector(".services");
 
-if (system && servicesSection) {
-  window.addEventListener("scroll", () => {
+/* =========================
+   THROTTLED SCROLL HANDLER
+========================= */
+let ticking = false;
+
+function onScroll() {
+  const scroll = window.scrollY;
+
+  // Progress bar
+  if (progressBar) {
+    const total = document.body.scrollHeight - window.innerHeight;
+    progressBar.style.width = `${(scroll / total) * 100}%`;
+  }
+
+  // Hero title morph
+  if (heroTitle) {
+    if (scroll > 200 && phraseIndex === 0) {
+      heroTitle.textContent = phrases[1];
+      phraseIndex = 1;
+    }
+    if (scroll > 500 && phraseIndex === 1) {
+      heroTitle.textContent = phrases[2];
+      phraseIndex = 2;
+    }
+  }
+
+  // System compact mode
+  if (system && servicesSection) {
     const triggerPoint = servicesSection.offsetTop - 300;
-    system.classList.toggle("compact", window.scrollY > triggerPoint);
-  });
+    system.classList.toggle("compact", scroll > triggerPoint);
+  }
+
+  ticking = false;
 }
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(onScroll);
+    ticking = true;
+  }
+});
 
 /* =========================
    FINALITY TRIGGER
