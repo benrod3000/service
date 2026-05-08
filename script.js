@@ -201,7 +201,7 @@ if (designToggle) {
     // Update button text with smooth transition
     designToggle.style.opacity = '0.5';
     setTimeout(() => {
-      designToggle.textContent = newDesign === 'bold' ? 'BOLD' : 'BOLD';
+      designToggle.textContent = 'VERSION 1';
       designToggle.style.opacity = '1';
     }, 150);
   });
