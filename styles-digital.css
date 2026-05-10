@@ -141,7 +141,7 @@ p {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .rail-tab:hover,
@@ -162,7 +162,7 @@ p {
 
 .rail-tab:hover,
 .rail-tab:focus-visible {
-  transform: scale(1.08);
+  transform: scale(1.1);
   box-shadow: 0 8px 18px rgba(67, 111, 91, 0.12);
 }
 
@@ -174,12 +174,12 @@ p {
 .rail-tab.active::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: 4px;
-  width: 6px;
-  height: 6px;
-  transform: translateX(-50%);
-  border-radius: 999px;
+  left: -6px;
+  top: 50%;
+  width: 10px;
+  height: 3px;
+  transform: translateY(-50%);
+  border-radius: 10px;
   background: var(--accent);
 }
 
@@ -589,9 +589,9 @@ p {
   border-radius: 999px;
   background: rgba(86, 129, 106, 0.11);
   color: var(--accent);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
