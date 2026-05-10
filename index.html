@@ -28,6 +28,8 @@
     <button class="design-toggle" title="Toggle design">VERSION 1</button>
   </header>
 
+  <!-- VERSION 3 (DIGITAL) ON SEPARATE PAGE: digital.html -->
+
   <!-- SYSTEM WRAPPER: hero + services -->
   <div class="system">
 
@@ -260,9 +262,15 @@
   <script>
     // Apply saved design preference after body exists
     const savedDesign = localStorage.getItem('design-preference') || 'classic';
+    const designToggle = document.querySelector('.design-toggle');
+    
     if (savedDesign === 'bold') {
       document.body.classList.add('design-bold');
       document.getElementById('design-stylesheet').href = 'styles-bold.css';
+      if (designToggle) designToggle.textContent = 'VERSION 2';
+    } else {
+      if (savedDesign === 'digital') localStorage.setItem('design-preference', 'classic');
+      if (designToggle) designToggle.textContent = 'VERSION 1';
     }
   </script>
 

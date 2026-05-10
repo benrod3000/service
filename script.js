@@ -175,34 +175,118 @@ const ctaObserver = new IntersectionObserver(
 if (cta) ctaObserver.observe(cta);
 
 /* =========================
-   DESIGN TOGGLE - BOLD/CLASSIC
+   DESIGN TOGGLE - CLASSIC/BOLD/DIGITAL
+========================= */
+/* =========================
+   DESIGN TOGGLE - NAVIGATE BETWEEN VERSIONS
 ========================= */
 const designToggle = document.querySelector('.design-toggle');
-const designStylesheet = document.getElementById('design-stylesheet');
 
 if (designToggle) {
   designToggle.addEventListener('click', () => {
-    const currentDesign = document.body.classList.contains('design-bold') ? 'bold' : 'classic';
-    const newDesign = currentDesign === 'bold' ? 'classic' : 'bold';
-    
-    // Update localStorage
-    localStorage.setItem('design-preference', newDesign);
-    
-    // Update body class
-    document.body.classList.toggle('design-bold');
-    
-    // Update stylesheet
-    if (newDesign === 'bold') {
-      designStylesheet.href = 'styles-bold.css';
+    // Check which page we're currently on
+    if (window.location.pathname.includes('digital.html')) {
+      // On digital.html - go back to index.html
+      window.location.href = 'index.html';
     } else {
-      designStylesheet.href = '';
+      // On index.html - check current version
+      const currentDesign = localStorage.getItem('design-preference') || 'classic';
+      
+      if (currentDesign === 'classic') {
+        // Classic → Bold
+        localStorage.setItem('design-preference', 'bold');
+        // Load bold stylesheet
+        const stylesheet = document.getElementById('design-stylesheet');
+        if (stylesheet) stylesheet.href = 'styles-bold.css';
+        // Update button
+        designToggle.textContent = 'VERSION 2';
+        designToggle.style.opacity = '0.5';
+        setTimeout(() => { designToggle.style.opacity = '1'; }, 150);
+        // Add body class
+        document.body.classList.add('design-bold');
+      } else if (currentDesign === 'bold') {
+        // Bold → Digital (navigate to digital.html)
+        localStorage.setItem('design-preference', 'digital');
+        window.location.href = 'digital.html';
+      } else {
+        // Digital → Classic (reset)
+        localStorage.setItem('design-preference', 'classic');
+        window.location.href = 'index.html';
+      }
     }
-    
-    // Update button text with smooth transition
-    designToggle.style.opacity = '0.5';
-    setTimeout(() => {
-      designToggle.textContent = 'VERSION 1';
-      designToggle.style.opacity = '1';
-    }, 150);
   });
+}
+
+// Load correct stylesheet on page load for index.html
+if (!window.location.pathname.includes('digital.html')) {
+  const currentDesign = localStorage.getItem('design-preference') || 'classic';
+  const stylesheet = document.getElementById('design-stylesheet');
+  const designToggleBtn = document.querySelector('.design-toggle');
+  
+  if (currentDesign === 'bold' && stylesheet) {
+    stylesheet.href = 'styles-bold.css';
+    document.body.classList.add('design-bold');
+    if (designToggleBtn) designToggleBtn.textContent = 'VERSION 2';
+  } else if (currentDesign === 'digital') {
+    localStorage.setItem('design-preference', 'classic');
+    if (stylesheet) stylesheet.href = '';
+    document.body.classList.remove('design-bold', 'design-digital');
+    if (designToggleBtn) designToggleBtn.textContent = 'VERSION 1';
+  }
+}
+
+/* =========================
+   DIGITAL DESIGN - NAVIGATION & INTERACTIONS (on digital.html only)
+========================= */
+if (window.location.pathname.includes('digital.html')) {
+  const navRailBtns = document.querySelectorAll('.nav-rail-btn');
+  const cardSections = document.querySelectorAll('.card-section');
+  const cardContainer = document.querySelector('.card-container');
+
+  navRailBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = btn.getAttribute('data-section');
+      // Update active button
+      navRailBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Hide all card sections
+      cardSections.forEach(s => s.classList.remove('active'));
+      // Show selected section
+      const activeSection = document.querySelector(`.card-section[data-section="${section}"]`);
+      if (activeSection) {
+        activeSection.classList.add('active');
+        // Trigger skill bar animations if in services section
+        if (section === 'services') {
+          animateSkillBars();
+        }
+        // Scroll to top
+        if (cardContainer) {
+          cardContainer.scrollTop = 0;
+        }
+      }
+    });
+  });
+
+  /* =========================
+     SKILL BAR ANIMATIONS
+  ========================= */
+  function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    skillBars.forEach(bar => {
+      bar.style.animation = 'none';
+      setTimeout(() => {
+        bar.style.animation = '';
+      }, 10);
+    });
+  }
+
+  // Trigger animations when Services button is clicked
+  const servicesBtn = document.querySelector('.nav-rail-btn[data-section="services"]');
+  if (servicesBtn) {
+    servicesBtn.addEventListener('click', () => {
+      setTimeout(() => {
+        animateSkillBars();
+      }, 300);
+    });
+  }
 }

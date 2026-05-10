@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ben Rodriguez - Digital Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-digital.css">
+</head>
+<body class="design-digital">
+  <nav class="nav-rail-sticky" aria-label="Section navigation">
+    <ul class="nav-rail-list">
+      <li>
+        <button class="nav-rail-btn active" data-section="about" aria-label="About">
+          <span class="nav-rail-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          </span>
+          <span class="nav-rail-label">About</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-rail-btn" data-section="services" aria-label="Services">
+          <span class="nav-rail-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M16 11V7a4 4 0 0 0-8 0v4"/></svg>
+          </span>
+          <span class="nav-rail-label">Services</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-rail-btn" data-section="portfolio" aria-label="Portfolio">
+          <span class="nav-rail-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 3v4M8 3v4"/></svg>
+          </span>
+          <span class="nav-rail-label">Portfolio</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-rail-btn" data-section="contact" aria-label="Contact">
+          <span class="nav-rail-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          </span>
+          <span class="nav-rail-label">Contact</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="card-container">
+    <div class="card-content-wrapper" id="card-content-wrapper"></div>
+  </main>
+
+  <script>
+    const contentWrapper = document.getElementById('card-content-wrapper');
+
+    function getSectionContent(section) {
+      if (section === 'about') return `
+        <section class="card-section fade-in" data-section="about">
+          <div class="digital-card-hero">
+            <img src="images/ben-portrait.svg" alt="Ben Rodriguez" />
+            <h2>Ben Rodriguez</h2>
+            <p>Digital Marketing Manager specializing in growth systems, audience ownership, and long-term scalability.</p>
+            <p>I help creators, brands, and founders build sustainable growth infrastructure, turning attention into owned audience systems that compound over time.</p>
+            <div class="digital-stats">
+              <div class="digital-stat"><span class="digital-stat-num">10+</span><span class="digital-stat-label">Years Experience</span></div>
+              <div class="digital-stat"><span class="digital-stat-num">20+</span><span class="digital-stat-label">Campaigns Launched</span></div>
+              <div class="digital-stat"><span class="digital-stat-num">3x</span><span class="digital-stat-label">Average ROAS</span></div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      if (section === 'services') return `
+        <section class="card-section fade-in" data-section="services">
+          <div class="digital-services-header">
+            <h2>Services & Expertise</h2>
+            <p>Core competencies that drive measurable growth</p>
+          </div>
+          <div class="digital-services-grid">
+            <div class="digital-service-item"><h3>Growth Strategy</h3><p>Audience research, positioning, and a clear roadmap for compounding growth across platforms.</p></div>
+            <div class="digital-service-item"><h3>Content Systems</h3><p>Repeatable frameworks that keep you publishing consistently without burning out.</p></div>
+            <div class="digital-service-item"><h3>Paid Media</h3><p>Meta and YouTube campaigns built for audience expansion, retargeting, and measurable returns.</p></div>
+            <div class="digital-service-item"><h3>SEO & Web Presence</h3><p>On-page SEO, conversion-focused web design, and funnels that turn visitors into leads.</p></div>
+            <div class="digital-service-item"><h3>Email Marketing</h3><p>List building, automation, and campaigns that give you direct access to your audience.</p></div>
+            <div class="digital-service-item"><h3>Analytics & Optimization</h3><p>Data tracking, performance audits, and decisions based on what actually works.</p></div>
+          </div>
+        </section>
+      `;
+
+      if (section === 'portfolio') return `
+        <section class="card-section fade-in" data-section="portfolio">
+          <div class="digital-services-header">
+            <h2>Portfolio & Projects</h2>
+            <p>Real results from growth systems in action</p>
+          </div>
+          <div class="digital-services-grid">
+            <div class="digital-service-item"><h3>Independent Artist Campaign Architecture</h3><p>Coordinated release systems combining distribution, targeting, and timing to turn drops into attention events.</p></div>
+            <div class="digital-service-item"><h3>Multi-Platform Audience Growth Strategy</h3><p>Repeatable content systems that turn creative output into consistent reach across modern platforms.</p></div>
+            <div class="digital-service-item"><h3>Owned Audience System</h3><p>Newsletter systems that turn attention into an owned audience asset with automated sequences.</p></div>
+          </div>
+        </section>
+      `;
+
+      if (section === 'contact') return `
+        <section class="card-section fade-in" data-section="contact">
+          <div class="digital-services-header">
+            <h2>Get In Touch</h2>
+            <p>Ready to build sustainable growth systems?</p>
+          </div>
+          <div class="digital-contact-info">
+            <div class="digital-contact-item"><span class="digital-contact-label">Email</span><a href="mailto:benrod1@gmail.com" class="digital-contact-value">benrod1@gmail.com</a></div>
+            <div class="digital-contact-item"><span class="digital-contact-label">Location</span><span class="digital-contact-value">Austin, TX</span></div>
+          </div>
+          <form class="digital-contact-form" onsubmit="event.preventDefault()">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Tell me about your growth goals..." required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </section>
+      `;
+
+      return '';
+    }
+
+    function loadSection(section) {
+      contentWrapper.innerHTML = getSectionContent(section);
+      requestAnimationFrame(() => {
+        const fade = contentWrapper.querySelector('.fade-in');
+        if (fade) fade.classList.add('visible');
+      });
+    }
+
+    document.querySelectorAll('.nav-rail-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-rail-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadSection(btn.dataset.section);
+      });
+
+      btn.addEventListener('mouseenter', () => btn.querySelector('.nav-rail-label').classList.add('show'));
+      btn.addEventListener('mouseleave', () => btn.querySelector('.nav-rail-label').classList.remove('show'));
+      btn.addEventListener('focus', () => btn.querySelector('.nav-rail-label').classList.add('show'));
+      btn.addEventListener('blur', () => btn.querySelector('.nav-rail-label').classList.remove('show'));
+    });
+
+    loadSection('about');
+  </script>
+</body>
+</html>
