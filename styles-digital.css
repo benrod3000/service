@@ -5,7 +5,7 @@
   --panel-soft: hsl(13 21% 14%);
   --line: hsl(13 16% 24%);
   --text: hsl(0 0% 92%);
-  --muted: hsl(24 12% 72%);
+  --muted: hsl(24 14% 79%);
   --accent: hsl(14 85% 55%);
   --accent-2: hsl(20 90% 62%);
   --radius-lg: 30px;
@@ -13,7 +13,7 @@
   --shell-gutter: 40px;
   --shadow-lg: 0 0 50px rgba(255, 69, 0, 0.05), 0 14px 34px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.25), 0 18px 34px rgba(0, 0, 0, 0.22);
-  --line-soft: rgba(246, 236, 224, 0.12);
+  --line-soft: rgba(246, 236, 224, 0.18);
 }
 
 * {
@@ -39,7 +39,7 @@ body.design-digital {
 
 p {
   line-height: 1.8;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.35px;
 }
 
 .ambient-bg {
@@ -184,7 +184,7 @@ p {
 .contact-form input:focus-visible,
 .contact-form textarea:focus-visible,
 .contact-form button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--accent-2);
   outline-offset: 2px;
 }
 
@@ -461,7 +461,7 @@ p {
 .workspace-mode {
   margin: 0;
   flex: 1;
-  color: hsl(22 13% 68%);
+  color: hsl(22 15% 76%);
   font-size: 0.64rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -596,7 +596,7 @@ p {
 .card-title-wrap p {
   margin: 0;
   color: var(--muted);
-  line-height: 1.78;
+  line-height: 1.84;
 }
 
 .resume-layout {
@@ -941,6 +941,11 @@ p {
   color: var(--text);
   padding: 9px 10px;
   font: inherit;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: hsl(24 12% 72%);
 }
 
 .contact-form textarea {
