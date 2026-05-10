@@ -4,14 +4,14 @@
   --panel: hsl(0 0% 100%);
   --panel-soft: hsl(30 18% 99%);
   --line: hsl(30 12% 82%);
-  --text: hsl(30 10% 20%);
+  --text: #2c2621;
   --muted: hsl(30 5% 45%);
   --accent: hsl(156 45% 35%);
   --accent-2: hsl(156 40% 42%);
   --radius-lg: 30px;
   --radius-md: 22px;
   --shell-gutter: 40px;
-  --shadow-lg: 0 40px 100px rgba(30, 20, 10, 0.08);
+  --shadow-lg: 0 30px 60px rgba(44, 38, 33, 0.1), 0 8px 20px rgba(44, 38, 33, 0.05);
   --shadow-card: 0 16px 40px rgba(40, 28, 16, 0.09);
   --line-soft: rgba(62, 48, 36, 0.12);
 }
@@ -111,7 +111,7 @@ p {
 
 .rail-nav {
   display: grid;
-  align-content: space-between;
+  align-content: start;
   gap: 8px;
   padding: 10px;
   border-right: 1px solid var(--line-soft);
@@ -122,6 +122,7 @@ p {
 .rail-main {
   display: grid;
   gap: 8px;
+  padding-block: 6px;
 }
 
 .rail-tab {
@@ -316,7 +317,7 @@ p {
   margin: 0 0 7px;
   font-size: 2.08rem;
   font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
@@ -537,11 +538,11 @@ p {
 }
 
 .workspace-body::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 .workspace-body::-webkit-scrollbar-thumb {
-  background: rgba(86, 129, 106, 0.35);
+  background: rgba(49, 129, 97, 0.85);
   border-radius: 999px;
 }
 
@@ -597,7 +598,7 @@ p {
   margin: 12px 0 10px;
   font-size: clamp(2.15rem, 2.9vw, 2.85rem);
   font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.012em;
   line-height: 1.16;
 }
@@ -659,7 +660,7 @@ p {
   display: inline-block;
   margin-bottom: 5px;
   font-size: 0.72rem;
-  letter-spacing: 2.4px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--accent-2);
 }
@@ -885,7 +886,7 @@ p {
 .blog-meta {
   font-size: 0.73rem;
   color: var(--accent-2);
-  letter-spacing: 0.06em;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
