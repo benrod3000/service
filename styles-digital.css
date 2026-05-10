@@ -65,10 +65,10 @@ p {
 .digital-container {
   position: relative;
   z-index: 10;
-  width: min(1180px, 100%);
-  height: min(780px, calc(100vh - 32px));
+  width: min(1220px, 100%);
+  height: min(800px, calc(100vh - 32px));
   display: grid;
-  grid-template-columns: 72px 360px minmax(0, 1fr);
+  grid-template-columns: 64px 320px minmax(0, 1fr);
   border: 1px solid rgba(111, 150, 210, 0.36);
   border-radius: 22px;
   background: linear-gradient(160deg, rgba(16, 27, 46, 0.9), rgba(14, 24, 41, 0.8));
@@ -146,12 +146,13 @@ p {
   border-right: 1px solid rgba(111, 150, 210, 0.28);
   background: rgba(15, 27, 47, 0.85);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 250px minmax(0, 1fr);
+  min-height: 0;
 }
 
 .profile-cover {
-  height: 300px;
+  height: auto;
   background: #0d1628;
   border-bottom: 1px solid var(--line);
 }
@@ -164,6 +165,7 @@ p {
 
 .profile-content {
   padding: 16px;
+  overflow: auto;
 }
 
 .profile-content h1 {
@@ -325,7 +327,7 @@ p {
 .workspace-body {
   flex: 1;
   overflow: auto;
-  padding: 16px;
+  padding: 18px;
   min-height: 0;
 }
 
@@ -339,8 +341,9 @@ p {
 }
 
 .stage-card {
-  max-width: 860px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 920px;
+  margin: 0;
   border: 1px solid rgba(111, 150, 210, 0.3);
   border-radius: 12px;
   background: linear-gradient(160deg, rgba(27, 43, 72, 0.74), rgba(15, 24, 41, 0.84));
@@ -747,7 +750,11 @@ p {
   .digital-container {
     width: 100%;
     height: calc(100vh - 20px);
-    grid-template-columns: 64px 320px minmax(0, 1fr);
+    grid-template-columns: 58px 290px minmax(0, 1fr);
+  }
+
+  .profile-card {
+    grid-template-rows: 220px minmax(0, 1fr);
   }
 }
 
@@ -780,10 +787,11 @@ p {
   .profile-card {
     border-right: 0;
     border-bottom: 1px solid var(--line);
+    grid-template-rows: 220px minmax(0, 1fr);
   }
 
   .profile-cover {
-    height: 200px;
+    height: auto;
   }
 
   .workspace-header {
