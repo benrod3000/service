@@ -77,8 +77,10 @@
   <script>
     const stage = document.getElementById('card-content-wrapper');
     const rotator = document.getElementById('sidebar-rotator');
+    const railTabs = [...document.querySelectorAll('.rail-tab')];
     const phrases = ['Growth Systems Architect', 'Audience Ownership Strategist', 'Paid + Organic Scale Operator'];
     let phraseIndex = 0;
+    let currentSection = 'about';
 
     setInterval(() => {
       phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -251,6 +253,11 @@
     }
 
     function mountSection(section) {
+      if (section === currentSection && stage.childElementCount > 0) {
+        return;
+      }
+
+      currentSection = section;
       stage.innerHTML = sectionTemplate(section);
       const card = stage.querySelector('.section-enter');
       requestAnimationFrame(() => card.classList.add('section-enter-active'));
@@ -263,10 +270,19 @@
       }
     }
 
-    document.querySelectorAll('.rail-tab').forEach((btn) => {
+    railTabs.forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.rail-tab').forEach((b) => b.classList.remove('active'));
+        if (btn.dataset.section === currentSection) {
+          return;
+        }
+
+        railTabs.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         mountSection(btn.dataset.section);
       });
     });
