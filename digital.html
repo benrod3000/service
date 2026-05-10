@@ -45,6 +45,7 @@
 
     <aside class="profile-card" aria-label="Profile panel">
       <div class="profile-cover">
+        <div class="img-spinner" aria-hidden="true"></div>
         <img class="blur-up" src="images/ben-portrait.svg" alt="Ben Rodriguez" loading="eager" decoding="async">
       </div>
       <div class="profile-content">
@@ -110,7 +111,11 @@
     }
 
     document.querySelectorAll('img.blur-up').forEach((img) => {
-      const markLoaded = () => img.classList.add('loaded');
+      const cover = img.closest('.profile-cover');
+      const markLoaded = () => {
+        img.classList.add('loaded');
+        if (cover) cover.classList.add('is-loaded');
+      };
       if (img.complete) {
         markLoaded();
       } else {
@@ -316,21 +321,16 @@
       }
 
       currentSection = section;
-      stage.classList.add('is-loading');
+      const currentCard = stage.querySelector('.stage-card');
+      const nextHost = document.createElement('div');
+      nextHost.innerHTML = sectionTemplate(section).trim();
+      const nextCard = nextHost.firstElementChild;
 
-      setTimeout(() => {
-        stage.innerHTML = sectionTemplate(section);
-        const card = stage.querySelector('.section-enter');
-        requestAnimationFrame(() => {
-          stage.classList.remove('is-loading');
-          if (card) {
-            card.classList.add('section-enter-active');
-            if (section === 'about') {
-              card.classList.add('draw-signature');
-            }
-          }
-        });
+      if (!nextCard) {
+        return;
+      }
 
+      const activateSectionEffects = () => {
         if (section === 'services') {
           stage.querySelectorAll('.meter i').forEach((bar, idx) => {
             setTimeout(() => {
@@ -338,7 +338,32 @@
             }, 120 * idx);
           });
         }
-      }, 140);
+
+        if (section === 'about') {
+          nextCard.classList.add('draw-signature');
+        }
+      };
+
+      if (!currentCard) {
+        stage.innerHTML = '';
+        stage.appendChild(nextCard);
+        requestAnimationFrame(() => {
+          nextCard.classList.add('section-enter-active');
+          activateSectionEffects();
+        });
+        return;
+      }
+
+      stage.appendChild(nextCard);
+      requestAnimationFrame(() => {
+        currentCard.classList.add('section-exit-active');
+        nextCard.classList.add('section-enter-active');
+        activateSectionEffects();
+      });
+
+      setTimeout(() => {
+        currentCard.remove();
+      }, 400);
     }
 
     railTabs.forEach((btn) => {

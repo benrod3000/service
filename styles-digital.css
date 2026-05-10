@@ -13,6 +13,7 @@
   --shell-gutter: 34px;
   --shadow-lg: 0 24px 50px rgba(35, 24, 13, 0.1), 0 6px 18px rgba(35, 24, 13, 0.06);
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 8px rgba(0, 0, 0, 0.02);
+  --line-soft: rgba(31, 26, 23, 0.08);
 }
 
 * {
@@ -42,7 +43,10 @@ p {
 .ambient-bg {
   position: fixed;
   inset: 0;
-  background: linear-gradient(-55deg, transparent 0%, rgba(13, 110, 253, 0.08) 50%, transparent 100%);
+  background:
+    radial-gradient(circle at 74% 14%, rgba(13, 110, 253, 0.1) 0%, transparent 38%),
+    radial-gradient(circle at 22% 82%, rgba(77, 161, 255, 0.08) 0%, transparent 36%),
+    linear-gradient(-55deg, transparent 0%, rgba(13, 110, 253, 0.06) 50%, transparent 100%);
   background-size: 400% 400%;
   animation: bg-fade 0.7s ease both, drift 12s ease infinite 0.7s;
   pointer-events: none;
@@ -58,7 +62,7 @@ p {
   inset: 0;
   background-image: radial-gradient(rgba(255, 255, 255, 0.08) 0.5px, transparent 0.5px);
   background-size: 3px 3px;
-  opacity: 0.06;
+  opacity: 0.08;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -76,7 +80,7 @@ p {
   height: min(80vh, 860px);
   display: grid;
   grid-template-columns: 72px 330px minmax(0, 1fr);
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius-lg);
   background: color-mix(in srgb, var(--panel) 80%, transparent);
   backdrop-filter: blur(15px);
@@ -141,11 +145,16 @@ p {
   color: var(--accent);
   border-color: #d9d1c3;
   background: #ffffff;
+  transform: translateY(-2px);
 }
 
 .rail-tab.active {
-  transform: translateX(2px);
+  transform: translateX(2px) translateY(-2px);
   box-shadow: inset 3px 0 0 var(--accent), 0 10px 20px rgba(13, 110, 253, 0.14);
+}
+
+.rail-tab:active {
+  transform: scale(0.98);
 }
 
 .rail-tab:focus-visible,
@@ -201,24 +210,62 @@ p {
 .profile-cover {
   height: auto;
   background: #efeadf;
-  border-bottom: 1px solid #ece5d8;
+  border-bottom: 1px solid var(--line-soft);
+  position: relative;
+  overflow: hidden;
 }
 
 .profile-cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .profile-cover img.blur-up {
   filter: blur(12px);
-  transform: scale(1.03);
+  transform: scale(1.05);
   transition: filter 0.45s ease, transform 0.45s ease;
 }
 
 .profile-cover img.blur-up.loaded {
   filter: blur(0);
   transform: scale(1);
+}
+
+.profile-card:hover .profile-cover img {
+  transform: scale(1.03);
+}
+
+.img-spinner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(252, 251, 248, 0.5);
+  transition: opacity 0.24s ease;
+  z-index: 2;
+}
+
+.img-spinner::before {
+  content: "";
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 2px solid rgba(13, 110, 253, 0.2);
+  border-top-color: var(--accent);
+  animation: spinner 0.8s linear infinite;
+}
+
+.profile-cover.is-loaded .img-spinner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .profile-content {
@@ -247,10 +294,12 @@ p {
 
 .profile-role {
   margin: 0;
-  color: var(--muted);
+  color: #4e453c;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
 }
 
 .profile-rotator {
@@ -263,8 +312,8 @@ p {
 
 .profile-facts {
   margin-top: 14px;
-  border-top: 1px solid #e4ddcf;
-  border-bottom: 1px solid #e4ddcf;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
   padding: 10px 0;
   display: grid;
   gap: 8px;
@@ -293,6 +342,8 @@ p {
   margin-top: 14px;
   display: flex;
   gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line-soft);
 }
 
 .profile-socials a {
@@ -303,7 +354,7 @@ p {
   display: grid;
   place-items: center;
   color: var(--muted);
-  transition: 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .profile-socials a:hover,
@@ -311,6 +362,11 @@ p {
   color: var(--accent);
   border-color: #9fc6ff;
   background: rgba(13, 110, 253, 0.08);
+  transform: translateY(-2px);
+}
+
+.profile-socials a:active {
+  transform: scale(0.98);
 }
 
 .profile-cta {
@@ -328,6 +384,17 @@ p {
   padding: 10px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   box-shadow: 0 12px 24px rgba(13, 110, 253, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-cta:hover,
+.profile-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(13, 110, 253, 0.28);
+}
+
+.profile-cta:active {
+  transform: scale(0.98);
 }
 
 .workspace-card {
@@ -398,19 +465,25 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .workspace-back:hover,
 .workspace-back:focus-visible {
   color: var(--accent);
   border-color: #a9cbff;
+  transform: translateY(-2px);
+}
+
+.workspace-back:active {
+  transform: scale(0.98);
 }
 
 .workspace-body {
   flex: 1;
   overflow: auto;
   scroll-behavior: smooth;
-  padding: var(--shell-gutter);
+  padding: max(var(--shell-gutter), 30px);
   min-height: 0;
   display: grid;
   align-content: start;
@@ -865,8 +938,12 @@ p {
 }
 
 .contact-form button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(13, 110, 253, 0.25);
+}
+
+.contact-form button:active {
+  transform: scale(0.98);
 }
 
 .signature-wrap {
@@ -895,15 +972,26 @@ p {
 
 .section-enter {
   opacity: 0;
-  transform: translate3d(0, 14px, 0) scale(0.995);
-  filter: blur(3px);
+  transform: translate3d(28px, 0, 0);
+  filter: blur(2px);
+  position: relative;
 }
 
 .section-enter.section-enter-active {
   opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0);
   filter: blur(0);
-  transition: opacity 0.33s cubic-bezier(0.22, 1, 0.36, 1), transform 0.33s cubic-bezier(0.22, 1, 0.36, 1), filter 0.33s ease;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+
+.section-exit-active {
+  opacity: 0;
+  transform: translate3d(-28px, 0, 0);
+  filter: blur(2px);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
 }
 
 .ui-cursor {
