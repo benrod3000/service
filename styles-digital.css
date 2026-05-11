@@ -989,6 +989,13 @@ p {
 }
 
 .meter i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.55s ease;
+}
 
 .site-signature {
   position: absolute;
@@ -1000,13 +1007,6 @@ p {
   text-transform: uppercase;
   color: color-mix(in srgb, var(--text) 48%, var(--muted));
   z-index: 20;
-}
-  display: block;
-  width: 0;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 0.55s ease;
 }
 
 .project-list {
