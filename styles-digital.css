@@ -219,6 +219,10 @@ p {
   height: 20px;
 }
 
+.rail-label {
+  display: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -519,6 +523,7 @@ p {
   margin-top: 18px;
   display: inline-block;
   width: 100%;
+  box-sizing: border-box;
   text-align: center;
   border: 1px solid hsl(156 38% 24%);
   border-radius: 8px;
@@ -926,22 +931,21 @@ p {
 
 .service-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .service-card {
   display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 14px;
   align-items: start;
   border: none;
   border-radius: 0;
   background: transparent;
   padding: 0;
   box-shadow: none;
-  border-bottom: 1px solid rgba(62, 48, 36, 0.12);
-  padding-bottom: 18px;
+  padding-bottom: 0;
   transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
 }
 
@@ -957,22 +961,36 @@ p {
   color: var(--text);
   font-weight: 700;
   font-size: 1.08rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .service-icon {
   color: var(--accent);
-  width: 16px;
-  min-width: 16px;
-  display: inline-block;
-  stroke-width: 2;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  display: block;
+  stroke-width: 1.5;
+  margin-bottom: 4px;
 }
 
 .service-title-col {
   display: grid;
   gap: 8px;
+}
+
+.service-title-col h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.service-title-col h4 .service-icon {
+  margin-bottom: 0;
 }
 
 .service-card p {
@@ -982,8 +1000,8 @@ p {
   line-height: 1.6;
 }
 
-.service-grid .service-card:last-child {
-  padding-bottom: 150px;
+.service-grid {
+  margin-bottom: 150px;
 }
 
 .tag {
@@ -1386,12 +1404,33 @@ p {
 
   .rail-tab {
     width: 100%;
-    height: 48px;
+    height: 56px;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: center;
+    justify-items: center;
+    gap: 2px;
+    padding: 5px 0;
+    border-radius: 10px;
   }
 
   .rail-tab svg {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .rail-label {
+    display: block;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .rail-tab.active::after {
+    display: none;
   }
 
   body.design-digital {
@@ -1401,52 +1440,118 @@ p {
   .profile-card {
     border-right: 0;
     border-bottom: 1px solid var(--line-soft);
-    grid-template-rows: 136px auto;
+    grid-template-columns: 104px minmax(0, 1fr);
+    grid-template-rows: auto;
+    position: relative;
+    top: auto;
+    overflow: visible;
   }
 
   .profile-cover {
-    min-height: 136px;
-    max-height: 136px;
+    display: block;
+    min-height: 100%;
+    max-height: none;
+    border-bottom: 0;
+    border-right: 1px solid var(--line-soft);
+  }
+
+  .profile-cover img {
+    object-fit: contain;
+    object-position: center;
   }
 
   .profile-content {
     padding: 14px 16px 16px;
     overflow: visible;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name name"
+      "role role"
+      "rotator rotator"
+      "facts socials"
+      "cta cta";
+    column-gap: 12px;
+    row-gap: 8px;
+    align-items: start;
   }
 
   .profile-content h1 {
+    grid-area: name;
     margin: 0 0 5px;
     font-size: clamp(1.55rem, 7vw, 2rem);
     line-height: 1.05;
   }
 
   .profile-role {
+    grid-area: role;
     margin: 0;
     letter-spacing: 0.12em;
   }
 
-  .profile-rotator,
+  .profile-rotator {
+    grid-area: rotator;
+    display: block;
+    margin-top: 0;
+    min-height: 18px;
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
   .profile-facts {
-    display: none;
+    grid-area: facts;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 0;
+    padding: 6px 0;
+    gap: 6px;
+  }
+
+  .profile-facts p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+  }
+
+  .profile-facts span {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+
+  .profile-facts strong {
+    font-size: 0.72rem;
+  }
+
+  .profile-facts .status-live {
+    font-size: 0.7rem;
+    gap: 6px;
   }
 
   .profile-socials {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    grid-area: socials;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 36px);
+    justify-content: end;
+    align-content: start;
     padding-top: 0;
     border-top: 0;
-    justify-content: flex-start;
-    gap: 10px;
+    gap: 6px;
   }
 
   .profile-socials a {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
   }
 
   .profile-cta {
+    grid-area: cta;
     margin-top: 6px;
+    width: 100%;
     font-size: 0.72rem;
+    letter-spacing: 0.06em;
     padding: 12px 14px;
   }
 
@@ -1456,10 +1561,14 @@ p {
 
   .about-grid,
   .resume-layout,
-  .service-grid,
   .stats-row,
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .blog-grid {
