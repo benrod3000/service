@@ -1729,78 +1729,65 @@ p {
   }
 
   .profile-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    grid-template-rows: auto;
     border-bottom: 1px solid var(--line-soft);
-    grid-template-columns: none;
-    grid-template-rows: none;
+    align-items: stretch;
   }
 
   .profile-cover {
-    width: clamp(80px, 24vw, 100px);
-    height: clamp(80px, 24vw, 100px);
-    min-height: 0;
-    border-right: 0;
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    max-height: none;
+    border-right: 1px solid var(--line-soft);
     border-bottom: 0;
-    border-radius: 999px;
-    overflow: hidden;
-    margin: 18px auto 40px;
+    border-radius: 0;
+    overflow: visible;
+    margin: 0;
   }
 
   .profile-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
   .profile-content {
-    width: 100%;
-    padding: 0 18px 18px;
-    grid-template-columns: 1fr;
+    width: auto;
+    padding: 14px 16px 16px;
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      "name"
-      "role"
-      "rotator"
-      "facts"
-      "socials"
-      "cta";
-    row-gap: 10px;
-    justify-items: center;
-    text-align: center;
+      "name name"
+      "role role"
+      "rotator rotator"
+      "facts socials"
+      "cta cta";
+    column-gap: 12px;
+    row-gap: 8px;
+    justify-items: stretch;
+    text-align: left;
   }
 
   .profile-content h1,
   .profile-role,
   .profile-rotator {
-    text-align: center;
+    text-align: left;
   }
 
   .profile-facts {
-    width: min(360px, 100%);
+    width: auto;
   }
 
   .profile-socials {
-    justify-content: center;
-    margin-bottom: 6px;
+    justify-content: end;
+    margin-bottom: 0;
   }
 
   .profile-cta {
-    grid-area: auto;
-    display: block;
-    position: static;
-    width: min(320px, 100%);
-    max-width: 100%;
-    margin: 10px auto 0;
-    transform: none;
-    z-index: auto;
-  }
-
-  .profile-cta:hover,
-  .profile-cta:focus-visible,
-  .profile-cta:active {
-    transform: none;
+    width: 100%;
+    margin: 6px 0 0;
   }
 }
 
