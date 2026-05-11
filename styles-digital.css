@@ -29,7 +29,7 @@ body.design-digital {
   margin: 0;
   color: var(--text);
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-  background: linear-gradient(135deg, hsl(30 22% 96%) 0%, hsl(30 18% 93%) 100%);
+  background: linear-gradient(135deg, hsl(30 22% 96%) 0%, hsl(156 35% 88%) 50%, hsl(30 18% 93%) 100%);
   background-size: 200% 200%;
   animation: colorShift 24s ease-in-out infinite;
   font-weight: 500;
