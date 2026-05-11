@@ -1644,6 +1644,12 @@ p {
     padding: 24px 30px 120px 30px;
   }
 
+  .stage-card[data-section="portfolio"]::before,
+  .stage-card[data-section="contact"]::before {
+    right: auto;
+    left: 14px;
+  }
+
   .stage-card[data-section="about"] .stats-row {
     margin-bottom: 42px;
   }
