@@ -124,6 +124,9 @@ p {
   border-right: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 16;
 }
 
 .rail-main {
@@ -349,13 +352,17 @@ p {
 }
 
 .profile-role {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 3px;
+  background: rgba(86, 129, 106, 0.08);
 }
 
 .profile-rotator {
@@ -660,7 +667,7 @@ p {
   border: none;
   border-radius: 0;
   background: transparent;
-  padding: 24px 40px 60px 96px;
+  padding: 240px 40px 60px 96px;
   box-shadow: none;
   will-change: transform, opacity, filter;
   position: relative;
@@ -1189,16 +1196,16 @@ p {
 
 .section-enter {
   opacity: 0;
-  transform: none;
-  filter: none;
+  transform: translateY(12px);
+  filter: blur(2px);
   position: relative;
 }
 
 .section-enter.section-enter-active {
   opacity: 1;
-  transform: none;
-  filter: none;
-  transition: opacity 0.3s ease;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: opacity 0.42s ease-out, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), filter 0.42s ease-out;
 }
 
 .section-exit-active {
