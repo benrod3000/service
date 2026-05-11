@@ -124,10 +124,10 @@ p {
   border-right: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(10px);
-  position: relative;
-  top: auto;
+  position: sticky;
+  top: 50px;
   transform: none;
-  align-self: center;
+  align-self: start;
   z-index: 16;
 }
 
@@ -235,7 +235,7 @@ p {
   min-height: 0;
   animation: sidebar-in 0.68s cubic-bezier(.4, 0, .2, 1) both;
   position: sticky;
-  top: 40px;
+  top: 50px;
   z-index: 15;
 }
 
@@ -637,7 +637,7 @@ p {
 }
 
 .workspace-body::after {
-  content: "\00A9 2026 BR. BUILT FROM SCRATCH WITH INTENTION.";
+  content: "\00A9 2026 BR. ALL RIGHTS RESERVED.";
   display: block;
   justify-self: end;
   margin: 22px 40px 10px 0;
@@ -952,6 +952,7 @@ p {
   width: 16px;
   min-width: 16px;
   display: inline-block;
+  stroke-width: 2;
 }
 
 .service-title-col {
