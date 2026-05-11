@@ -97,8 +97,24 @@
     const railTabs = [...document.querySelectorAll('.rail-tab')];
     const interactiveTargets = () => document.querySelectorAll('.rail-tab, .workspace-back, .profile-cta, .profile-socials a, .contact-form button');
     const phrases = ['Growth Systems Architect', 'Audience Ownership Strategist', 'Paid + Organic Scale Operator'];
+    let bindCursorTargets = () => {};
     let phraseIndex = 0;
     let currentSection = 'about';
+
+    function applyScanLeadEmphasis(root) {
+      const targets = root.querySelectorAll('.card-title-wrap p, .about-block p, .timeline-item p, .service-card p, .project-card p, .blog-card p');
+      targets.forEach((paragraph) => {
+        if (paragraph.dataset.scanLead === 'true') return;
+        const text = paragraph.textContent.replace(/\s+/g, ' ').trim();
+        if (!text) return;
+        const words = text.split(' ');
+        if (words.length < 5) return;
+        const lead = words.slice(0, 3).join(' ');
+        const rest = words.slice(3).join(' ');
+        paragraph.innerHTML = `<strong class="scan-lead">${lead}</strong> ${rest}`;
+        paragraph.dataset.scanLead = 'true';
+      });
+    }
 
     if (window.matchMedia('(hover: hover)').matches && cardShell) {
       const maxTilt = 1.8;
@@ -133,7 +149,7 @@
         cursor.style.top = `${event.clientY}px`;
       });
 
-      const bindCursorTargets = () => {
+      bindCursorTargets = () => {
         interactiveTargets().forEach((el) => {
           el.addEventListener('mouseenter', () => cursor.classList.add('active'));
           el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
@@ -336,6 +352,8 @@
         return;
       }
 
+      applyScanLeadEmphasis(nextCard);
+
       const activateSectionEffects = () => {
         if (section === 'services') {
           stage.querySelectorAll('.meter i').forEach((bar, idx) => {
@@ -356,6 +374,7 @@
         requestAnimationFrame(() => {
           nextCard.classList.add('section-enter-active');
           activateSectionEffects();
+          bindCursorTargets();
         });
         return;
       }
@@ -365,6 +384,7 @@
         currentCard.classList.add('section-exit-active');
         nextCard.classList.add('section-enter-active');
         activateSectionEffects();
+        bindCursorTargets();
       });
 
       setTimeout(() => {
@@ -374,6 +394,11 @@
 
     railTabs.forEach((btn) => {
       btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
+      if (btn.classList.contains('active')) {
+        btn.setAttribute('aria-current', 'page');
+      } else {
+        btn.removeAttribute('aria-current');
+      }
       btn.addEventListener('click', () => {
         if (btn.dataset.section === currentSection) {
           return;
@@ -382,9 +407,11 @@
         railTabs.forEach((b) => {
           b.classList.remove('active');
           b.setAttribute('aria-pressed', 'false');
+          b.removeAttribute('aria-current');
         });
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
+        btn.setAttribute('aria-current', 'page');
         mountSection(btn.dataset.section);
       });
     });
