@@ -99,6 +99,7 @@
     const rotator = document.getElementById('sidebar-rotator');
     const cursor = document.getElementById('ui-cursor');
     const profileCard = document.querySelector('.profile-card');
+    const railNav = document.querySelector('.rail-nav');
     const railTabs = [...document.querySelectorAll('.rail-tab')];
     const interactiveTargets = () => document.querySelectorAll('.rail-tab, .workspace-back, .profile-cta, .profile-socials a, .contact-form button');
     const phrases = ['Growth Systems Architect', 'Audience Ownership Strategist', 'Paid + Organic Scale Operator'];
@@ -107,6 +108,7 @@
     let currentSection = 'about';
     const compactProfileQuery = window.matchMedia('(max-width: 920px)');
     const compactProfileThreshold = 36;
+    const dockScrollThreshold = 18;
 
     function syncMobileProfileCompaction() {
       if (!profileCard || !stage) {
@@ -115,6 +117,11 @@
 
       const shouldCompact = compactProfileQuery.matches && stage.scrollTop > compactProfileThreshold;
       profileCard.classList.toggle('is-compact', shouldCompact);
+
+      if (railNav) {
+        const shouldElevateDock = compactProfileQuery.matches && stage.scrollTop > dockScrollThreshold;
+        railNav.classList.toggle('is-scrolled', shouldElevateDock);
+      }
     }
 
     function applyScanLeadEmphasis(root) {
