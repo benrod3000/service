@@ -448,6 +448,8 @@ section {
 ====================== */
 .services {
   padding: 100px 40px;
+  width: 100%;
+  min-height: 600px;
   background: var(--text);
   color: var(--bg);
 }
@@ -469,6 +471,8 @@ section {
   gap: 2px;
   background: rgba(255,255,255,0.08);
   border: 2px solid rgba(255,255,255,0.08);
+  /* DEBUG: bright red background to make grid visible */
+  background: #ff0000 !important;
   border-radius: 16px;
   overflow: hidden;
 }
