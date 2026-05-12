@@ -2,12 +2,15 @@
    TOKENS
 ====================== */
 :root {
-  --bg: #f5f5f0;
-  --surface: #ffffff;
-  --text: #111111;
-  --muted: #666666;
-  --border: #e0e0da;
-  --accent: #f97316;
+  --bg: #f4f4ee;
+  --surface: #fcfcf8;
+  --text: #1f221e;
+  --muted: #636b62;
+  --border: #d9ddd4;
+  --accent: #4f8a6b;
+  --accent-strong: #2f6f52;
+  --accent-glow: rgba(47, 111, 82, 0.35);
+  --focus-ring: rgba(47, 111, 82, 0.45);
   --radius: 12px;
   --font: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
 }
@@ -27,7 +30,9 @@ html {
 
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 88% 14%, rgba(79, 138, 107, 0.08) 0%, transparent 34%),
+    linear-gradient(160deg, var(--bg) 0%, #f0f4ef 50%, var(--bg) 100%);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -61,7 +66,7 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
-  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 84%, var(--surface));
   border-bottom: 1px solid var(--border);
 }
 
@@ -133,8 +138,8 @@ section {
 }
 
 .design-open-digital:hover {
-  border-color: var(--text);
-  background: #ffffff;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--surface) 78%, #edf5ef);
   transform: translateY(-1px);
 }
 
@@ -160,10 +165,16 @@ section {
 }
 
 .btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 28px rgba(47, 111, 82, 0.3);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.82), 0 0 0 8px rgba(47, 111, 82, 0.2);
 }
 
 .btn.outline {
@@ -172,8 +183,9 @@ section {
 }
 
 .btn.outline:hover {
-  background: var(--text);
-  color: var(--bg);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #fff;
   transform: translateY(-2px);
 }
 
@@ -204,9 +216,16 @@ section {
 }
 
 .design-toggle:hover {
-  background: var(--text);
-  border-color: var(--text);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  box-shadow: 0 7px 18px rgba(47, 111, 82, 0.28);
   transform: scale(1.05);
+}
+
+.design-toggle:focus-visible,
+.design-open-digital:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
 }
 
 /* ======================
@@ -605,7 +624,7 @@ section {
 
 .work-card:hover {
   transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+  box-shadow: 0 24px 46px rgba(47, 111, 82, 0.15);
 }
 
 .work-card-header {
@@ -691,7 +710,7 @@ section {
    CTA
 ====================== */
 .cta {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   padding: 140px 40px;
   position: relative;
   overflow: hidden;
@@ -729,9 +748,10 @@ section {
 }
 
 .cta .btn:hover {
-  background: var(--text);
-  border-color: var(--text);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
   color: #fff;
+  box-shadow: 0 12px 26px rgba(17, 40, 30, 0.3);
 }
 
 /* Final state */

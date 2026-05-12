@@ -1,19 +1,31 @@
 :root {
   --bg: hsl(30 20% 95%);
   --bg-2: hsl(30 18% 93%);
-  --panel: hsl(0 0% 100%);
-  --panel-soft: hsl(30 18% 99%);
+  --bg-3: hsl(156 24% 91%);
+  --panel: hsl(44 24% 98.5%);
+  --panel-soft: hsl(44 22% 97%);
   --line: hsl(30 12% 82%);
   --text: #2c2621;
   --muted: hsl(30 5% 45%);
-  --accent: hsl(156 45% 35%);
-  --accent-2: hsl(156 40% 42%);
+  --accent-h: 156;
+  --accent-s: 46%;
+  --accent-l: 34%;
+  --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+  --accent-2: hsl(var(--accent-h) 37% 43%);
+  --accent-strong: hsl(var(--accent-h) 52% 28%);
+  --focus-ring: hsla(var(--accent-h), 45%, 42%, 0.42);
+  --surface-tint: hsl(155 26% 97.5%);
+  --glass-tint: rgba(248, 252, 249, 0.66);
+  --canvas-alpha: 0.16;
+  --canvas-sat: 50%;
+  --canvas-light: 39%;
   --radius-lg: 30px;
   --radius-md: 22px;
   --shell-gutter: 40px;
   --shadow-lg: 0 30px 60px rgba(44, 38, 33, 0.1), 0 8px 20px rgba(44, 38, 33, 0.05);
   --shadow-card: 0 16px 40px rgba(40, 28, 16, 0.09);
   --line-soft: rgba(62, 48, 36, 0.12);
+  --bg-motion-speed: 18s;
 }
 
 * {
@@ -29,9 +41,11 @@ body.design-digital {
   margin: 0;
   color: var(--text);
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-  background: linear-gradient(135deg, hsl(30 22% 96%) 0%, hsl(156 35% 88%) 50%, hsl(30 18% 93%) 100%);
-  background-size: 200% 200%;
-  animation: colorShift 24s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(255, 255, 255, 0.56) 0%, transparent 34%),
+    linear-gradient(125deg, var(--bg) 0%, color-mix(in srgb, var(--bg-3) 76%, var(--surface-tint)) 52%, var(--bg-2) 100%);
+  background-size: 100% 100%, 180% 180%;
+  animation: colorShift var(--bg-motion-speed) ease-in-out infinite;
   font-weight: 500;
   display: grid;
   place-items: center;
@@ -47,13 +61,30 @@ p {
 .ambient-bg {
   position: fixed;
   inset: 0;
+  z-index: 1;
   background:
-    radial-gradient(circle at 72% 14%, rgba(59, 128, 101, 0.08) 0%, transparent 38%),
-    radial-gradient(circle at 22% 82%, rgba(84, 144, 114, 0.06) 0%, transparent 36%),
-    linear-gradient(-55deg, transparent 0%, rgba(80, 142, 111, 0.05) 50%, transparent 100%);
+    radial-gradient(circle at 76% 12%, rgba(59, 128, 101, 0.16) 0%, transparent 34%),
+    radial-gradient(circle at 18% 78%, rgba(84, 144, 114, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 55% 48%, rgba(255, 255, 255, 0.34) 0%, transparent 48%),
+    linear-gradient(-60deg, rgba(86, 129, 106, 0.1) 0%, transparent 42%, rgba(86, 129, 106, 0.09) 100%);
   background-size: 400% 400%;
-  animation: bg-fade 0.7s ease both, drift 12s ease infinite 0.7s;
+  animation: bg-fade 0.7s ease both, drift var(--bg-motion-speed) ease-in-out infinite 0.7s;
   pointer-events: none;
+}
+
+.ambient-canvas,
+.ambient-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ambient-canvas {
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
 }
 
 @keyframes bg-fade {
@@ -67,13 +98,11 @@ p {
 }
 
 .ambient-grain {
-  position: fixed;
-  inset: 0;
+  z-index: 3;
   background-image: radial-gradient(rgba(110, 90, 70, 0.08) 0.5px, transparent 0.5px);
   background-size: 3px 3px;
-  opacity: 0.1;
+  opacity: 0.09;
   mix-blend-mode: multiply;
-  pointer-events: none;
 }
 
 @keyframes drift {
@@ -91,7 +120,7 @@ p {
   grid-template-columns: 72px 340px minmax(0, 1fr);
   border: 1px solid rgba(132, 112, 94, 0.15);
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--panel) 96%, transparent);
+  background: color-mix(in srgb, var(--panel) 90%, var(--surface-tint));
   backdrop-filter: blur(15px);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
@@ -125,7 +154,7 @@ p {
   gap: 6px;
   padding: 12px;
   border: none;
-  background: rgba(255, 255, 255, 0.5);
+  background: color-mix(in srgb, var(--glass-tint) 88%, white);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   width: fit-content;
@@ -167,8 +196,8 @@ p {
 .rail-tab.active {
   color: var(--accent);
   opacity: 1;
-  border-color: rgba(90, 123, 105, 0.25);
-  background: rgba(84, 134, 109, 0.1);
+  border-color: rgba(71, 116, 92, 0.38);
+  background: rgba(84, 134, 109, 0.18);
 }
 
 .rail-tab.active {
@@ -184,7 +213,7 @@ p {
 
 .rail-tab.active {
   transform: translateX(2px);
-  box-shadow: 0 10px 18px rgba(67, 111, 91, 0.18);
+  box-shadow: 0 10px 20px rgba(39, 90, 67, 0.3);
 }
 
 .rail-tab.active::after {
@@ -196,7 +225,7 @@ p {
   height: 3px;
   transform: translateY(-50%);
   border-radius: 10px;
-  background: var(--accent);
+  background: var(--accent-strong);
 }
 
 .rail-tab:active {
@@ -210,8 +239,9 @@ p {
 .contact-form input:focus-visible,
 .contact-form textarea:focus-visible,
 .contact-form button:focus-visible {
-  outline: 3px solid var(--accent-2);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(56, 109, 82, 0.2);
 }
 
 .rail-tab svg {
@@ -237,7 +267,7 @@ p {
 
 .profile-card {
   border-right: 1px solid var(--line-soft);
-  background: var(--panel-soft);
+  background: color-mix(in srgb, var(--panel-soft) 86%, var(--surface-tint));
   overflow: hidden;
   display: grid;
   grid-template-rows: 250px minmax(0, 1fr);
@@ -525,7 +555,7 @@ p {
   width: 100%;
   box-sizing: border-box;
   text-align: center;
-  border: 1px solid hsl(156 38% 24%);
+  border: 1px solid color-mix(in srgb, var(--accent-strong) 86%, #1e3f30);
   border-radius: 8px;
   text-decoration: none;
   color: #f9fbff;
@@ -534,15 +564,15 @@ p {
   letter-spacing: 0.09em;
   text-transform: uppercase;
   padding: 14px 18px;
-  background: linear-gradient(180deg, hsl(156 45% 36%) 0%, hsl(156 45% 32%) 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 10px 18px rgba(35, 74, 57, 0.34);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 82%, #5f9478) 0%, var(--accent-strong) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 12px 22px rgba(28, 68, 50, 0.4);
   transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
 }
 
 .profile-cta:hover,
 .profile-cta:focus-visible {
   transform: translateY(-1px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 12px 22px rgba(35, 74, 57, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 12px 22px rgba(24, 60, 44, 0.38);
 }
 
 .profile-cta:active {
@@ -555,7 +585,7 @@ p {
   min-width: 0;
   height: 100%;
   min-height: 0;
-  background: var(--panel);
+  background: color-mix(in srgb, var(--panel) 86%, var(--surface-tint));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -619,8 +649,9 @@ p {
 
 .workspace-back:hover,
 .workspace-back:focus-visible {
-  color: var(--accent);
-  border-color: rgba(89, 130, 108, 0.38);
+  color: var(--accent-strong);
+  border-color: rgba(63, 104, 83, 0.44);
+  background: rgba(84, 134, 109, 0.12);
   transform: translateY(-2px);
 }
 
@@ -1357,9 +1388,9 @@ p {
 }
 
 .contact-form button {
-  border: 1px solid hsl(156 38% 24%);
+  border: 1px solid color-mix(in srgb, var(--accent-strong) 86%, #1e3f30);
   border-radius: 6px;
-  background: linear-gradient(180deg, hsl(156 45% 36%) 0%, hsl(156 45% 32%) 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 82%, #5f9478) 0%, var(--accent-strong) 100%);
   color: #f9fbff;
   font-weight: 800;
   padding: 14px 18px;
@@ -1371,12 +1402,12 @@ p {
   align-self: flex-start;
   margin-top: 8px;
   margin-bottom: 12px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 10px 18px rgba(35, 74, 57, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 12px 22px rgba(28, 68, 50, 0.4);
 }
 
 .contact-form button:hover {
   transform: translateY(-1px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 12px 22px rgba(35, 74, 57, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 12px 22px rgba(24, 60, 44, 0.38);
 }
 
 .contact-form button:active {
@@ -1497,6 +1528,10 @@ p {
   body.design-digital {
     overflow: auto;
     padding: 8px;
+  }
+
+  .ambient-canvas {
+    opacity: 0.74;
   }
 
   :root {
@@ -1873,6 +1908,10 @@ p {
     padding-bottom: calc(156px + env(safe-area-inset-bottom, 0px));
   }
 
+  .ambient-canvas {
+    opacity: 0.62;
+  }
+
   .rail-nav {
     left: 50%;
     right: auto;
@@ -1980,5 +2019,15 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .ambient-bg,
+  .ambient-canvas {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .ambient-canvas {
+    opacity: 0.42;
   }
 }
