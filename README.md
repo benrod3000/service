@@ -70,3 +70,21 @@ git push origin main
 
 - Keep copy and metadata in `index.html` aligned.
 - Keep animations performant by preferring `transform` and `opacity` transitions.
+
+## Temporary Cache-Busting
+
+Temporary query-string cache busting is currently enabled for local CSS/JS assets using:
+
+- `?v=20260512-1`
+
+This was added to reduce stale GitHub Pages browser cache issues after rapid updates.
+
+When to remove it:
+
+1. After the UI is stable and no longer changing frequently.
+2. After confirming users consistently see fresh updates without hard refresh.
+
+How to remove it:
+
+1. Remove `?v=20260512-1` from local asset URLs in `index.html`, `digital.html`, and `script.js`.
+2. Commit and push one cleanup commit.
