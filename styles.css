@@ -448,8 +448,6 @@ section {
 ====================== */
 .services {
   padding: 100px 40px;
-  width: 100%;
-  min-height: 600px;
   background: var(--text);
   color: var(--bg);
 }
@@ -471,8 +469,6 @@ section {
   gap: 2px;
   background: rgba(255,255,255,0.08);
   border: 2px solid rgba(255,255,255,0.08);
-  /* DEBUG: bright red background to make grid visible */
-  background: #ff0000 !important;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -483,9 +479,6 @@ section {
   transition: background 0.25s;
   position: relative;
   cursor: default;
-  display: block;
-  opacity: 1;
-  visibility: visible;
 }
 
 .service-card:hover {
@@ -560,22 +553,9 @@ section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-opacity: 1;
-visibility: visible;
 }
 
 .pillar-icon {
-
-  @@.work-card {
-  @@  display: block;
-  @@  color: inherit;
-  @@  border-radius: var(--radius);
-  @@  overflow: hidden;
-  @@  border: 2px solid var(--border);
-  @@  transition: transform 0.25s, box-shadow 0.25s;
-  opacity: 1;
-  visibility: visible;
-  @@}
   width: 60px;
   height: 60px;
   margin-bottom: 20px;
