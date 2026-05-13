@@ -4,8 +4,8 @@ Standalone resume and case study site for Ben Rodriguez, focused on growth syste
 
 ## Live Site
 
-- GitHub Pages: https://benrod3000.github.io/service/
-- Classic archive: https://benrod3000.github.io/service/index-classic.html
+- Live site: https://brod3000.com/
+- Classic archive: https://brod3000.com/index-classic.html
 
 ## Project Structure
 
