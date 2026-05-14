@@ -53,6 +53,7 @@ body.design-digital {
   place-items: center;
   padding: 16px;
   overflow: hidden;
+  min-height: 100dvh;
 }
 
 p {
@@ -84,7 +85,7 @@ p {
 .ambient-canvas {
   z-index: 2;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   opacity: 0.8;
   mix-blend-mode: multiply;
 }
@@ -117,7 +118,7 @@ p {
   position: relative;
   z-index: 10;
   width: min(1140px, 100%);
-  height: min(92vh, 920px);
+  height: min(92dvh, 920px);
   display: grid;
   grid-template-columns: 72px 340px minmax(0, 1fr);
   border: 1px solid rgba(132, 112, 94, 0.15);
@@ -1691,7 +1692,7 @@ p {
 
   .digital-container {
     width: 100%;
-    height: calc(100vh - 18px);
+    height: calc(100dvh - 18px);
     grid-template-columns: 64px 286px minmax(0, 1fr);
   }
 
@@ -1721,7 +1722,7 @@ p {
   .digital-container {
     grid-template-columns: 1fr;
     height: auto;
-    min-height: calc(100vh - 16px);
+    min-height: calc(100dvh - 16px);
     border-radius: 20px;
   }
 
@@ -1988,7 +1989,7 @@ p {
   }
 
   .workspace-body {
-    padding: 40px 24px calc(178px + env(safe-area-inset-bottom, 0px)) 24px;
+    padding: 40px 24px calc(212px + env(safe-area-inset-bottom, 0px)) 24px;
   }
 
   .about-grid,
@@ -2133,7 +2134,7 @@ p {
 
 @media (max-width: 768px) {
   body.design-digital {
-    padding-bottom: calc(196px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(228px + env(safe-area-inset-bottom, 0px));
   }
 
   .ambient-canvas {
