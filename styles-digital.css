@@ -1,3 +1,4 @@
+body { border: 15px solid magenta !important; }
 :root {
   --bg: hsl(30 20% 95%);
   --bg-2: hsl(30 18% 93%);
