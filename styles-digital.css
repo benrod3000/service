@@ -2626,8 +2626,21 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     box-shadow: none;
   }
 
-  /* ----- Profile card — horizontal strip ----- */
-  .profile-card {
+  /* ----- Brutalist card-profile: simple vertical stack ----- */
+  /* (Has .card-profile class — uses prof-photo/prof-body/prof-stats/profile-cta/profile-socials) */
+  .card-profile {
+    position: relative !important;
+    top: auto !important;
+    display: block !important;
+    overflow: hidden;
+    border-right: none;
+    border-bottom: 3px solid #0a0a0a;
+    width: 100%;
+  }
+
+  /* ----- Standard profile-card: horizontal strip ----- */
+  /* (Does NOT have .card-profile — uses profile-cover/profile-content children) */
+  .profile-card:not(.card-profile) {
     position: relative;
     top: auto;
     border-right: none;
@@ -2638,7 +2651,7 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     margin-bottom: 0;
   }
 
-  .profile-cover {
+  .profile-card:not(.card-profile) .profile-cover {
     display: block;
     min-height: 100%;
     max-height: none;
@@ -2646,12 +2659,12 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     border-right: 1px solid var(--line-soft);
   }
 
-  .profile-cover img {
+  .profile-card:not(.card-profile) .profile-cover img {
     object-fit: contain;
     object-position: center;
   }
 
-  .profile-content {
+  .profile-card:not(.card-profile) .profile-content {
     padding: 14px 16px 16px;
     overflow: visible;
     display: grid;
@@ -2668,20 +2681,20 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     text-align: left;
   }
 
-  .profile-content h1 {
+  .profile-card:not(.card-profile) .profile-content h1 {
     grid-area: name;
     margin: 0 0 5px;
     font-size: clamp(1.55rem, 7vw, 2rem);
     line-height: 1.05;
   }
 
-  .profile-role {
+  .profile-card:not(.card-profile) .profile-role {
     grid-area: role;
     margin: 0;
     letter-spacing: 0.12em;
   }
 
-  .profile-rotator {
+  .profile-card:not(.card-profile) .profile-rotator {
     grid-area: rotator;
     display: block;
     margin-top: 0;
@@ -2690,7 +2703,7 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     line-height: 1.35;
   }
 
-  .profile-facts {
+  .profile-card:not(.card-profile) .profile-facts {
     grid-area: facts;
     display: grid;
     grid-template-columns: 1fr;
@@ -2699,7 +2712,7 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     gap: 8px;
   }
 
-  .profile-facts p {
+  .profile-card:not(.card-profile) .profile-facts p {
     display: grid;
     grid-template-columns: minmax(86px, auto) minmax(0, 1fr);
     align-items: start;
@@ -2707,26 +2720,26 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     font-size: 0.72rem;
   }
 
-  .profile-facts span {
+  .profile-card:not(.card-profile) .profile-facts span {
     font-size: 0.62rem;
     letter-spacing: 0.08em;
     line-height: 1.2;
   }
 
-  .profile-facts strong {
+  .profile-card:not(.card-profile) .profile-facts strong {
     font-size: 0.72rem;
     line-height: 1.3;
     text-align: right;
     justify-self: end;
   }
 
-  .profile-facts .status-live {
+  .profile-card:not(.card-profile) .profile-facts .status-live {
     font-size: 0.7rem;
     gap: 6px;
     max-width: 168px;
   }
 
-  .profile-socials {
+  .profile-card:not(.card-profile) .profile-socials {
     grid-area: socials;
     margin: 0;
     display: grid;
@@ -2737,66 +2750,68 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     border-top: none;
   }
 
-  .profile-socials a {
+  .profile-card:not(.card-profile) .profile-socials a {
     width: 36px;
     height: 36px;
   }
 
-  .profile-cta {
+  .profile-card:not(.card-profile) .profile-cta {
     grid-area: cta;
     margin-top: 6px;
     width: 100%;
     min-height: 3.9em;
   }
 
-  /* Compact-on-scroll state */
-  .profile-card,
-  .profile-cover,
-  .profile-content,
-  .profile-content h1,
-  .profile-role,
-  .profile-rotator,
-  .profile-facts,
-  .profile-socials,
-  .profile-cta {
+  /* Compact-on-scroll state (standard card only) */
+  .profile-card:not(.card-profile),
+  .profile-card:not(.card-profile) .profile-cover,
+  .profile-card:not(.card-profile) .profile-content,
+  .profile-card:not(.card-profile) .profile-content h1,
+  .profile-card:not(.card-profile) .profile-role,
+  .profile-card:not(.card-profile) .profile-rotator,
+  .profile-card:not(.card-profile) .profile-facts,
+  .profile-card:not(.card-profile) .profile-socials,
+  .profile-card:not(.card-profile) .profile-cta {
     transition-timing-function: ease;
     transition-duration: 0.24s;
   }
 
-  .profile-card { transition-property: grid-template-columns, border-bottom-color; }
+  .profile-card:not(.card-profile) {
+    transition-property: grid-template-columns, border-bottom-color;
+  }
 
-  .profile-cover,
-  .profile-content,
-  .profile-content h1,
-  .profile-role,
-  .profile-rotator,
-  .profile-facts,
-  .profile-socials,
-  .profile-cta {
+  .profile-card:not(.card-profile) .profile-cover,
+  .profile-card:not(.card-profile) .profile-content,
+  .profile-card:not(.card-profile) .profile-content h1,
+  .profile-card:not(.card-profile) .profile-role,
+  .profile-card:not(.card-profile) .profile-rotator,
+  .profile-card:not(.card-profile) .profile-facts,
+  .profile-card:not(.card-profile) .profile-socials,
+  .profile-card:not(.card-profile) .profile-cta {
     transition-property: padding, min-height, margin, font-size, letter-spacing, opacity;
   }
 
-  .profile-card.is-compact {
+  .profile-card:not(.card-profile).is-compact {
     grid-template-columns: 72px minmax(0, 1fr);
     border-bottom-color: rgba(62, 48, 36, 0.18);
   }
 
-  .profile-card.is-compact .profile-cover { min-height: 72px; }
+  .profile-card:not(.card-profile).is-compact .profile-cover { min-height: 72px; }
 
-  .profile-card.is-compact .profile-content {
+  .profile-card:not(.card-profile).is-compact .profile-content {
     padding: 8px 12px;
     grid-template-areas: "name name" "role role";
     row-gap: 4px;
     align-content: center;
   }
 
-  .profile-card.is-compact .profile-content h1 {
+  .profile-card:not(.card-profile).is-compact .profile-content h1 {
     margin: 0;
     font-size: clamp(1.1rem, 4.8vw, 1.35rem);
     line-height: 1.05;
   }
 
-  .profile-card.is-compact .profile-role {
+  .profile-card:not(.card-profile).is-compact .profile-role {
     margin: 0;
     font-size: 0.58rem;
     letter-spacing: 0.1em;
@@ -2804,10 +2819,10 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     width: fit-content;
   }
 
-  .profile-card.is-compact .profile-rotator,
-  .profile-card.is-compact .profile-facts,
-  .profile-card.is-compact .profile-socials,
-  .profile-card.is-compact .profile-cta {
+  .profile-card:not(.card-profile).is-compact .profile-rotator,
+  .profile-card:not(.card-profile).is-compact .profile-facts,
+  .profile-card:not(.card-profile).is-compact .profile-socials,
+  .profile-card:not(.card-profile).is-compact .profile-cta {
     display: none;
   }
 
@@ -3221,13 +3236,16 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     column-gap: 0 !important;
   }
 
-  /* Brutalist profile card mobile */
+  /* Brutalist profile card mobile — explicit block flow, no grid columns */
   body.design-digital .card-profile {
     position: relative !important;
     top: auto !important;
-    width: 100%;
-    margin: 0;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
     overflow: hidden !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
   }
 
   body.design-digital .card-profile .prof-photo { height: 138px; }
