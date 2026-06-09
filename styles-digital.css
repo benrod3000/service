@@ -3309,6 +3309,7 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
 
   /* Brutalist rail nav — plain bottom bar */
   body.design-digital .rail-nav {
+    position: fixed !important;
     left: max(8px, env(safe-area-inset-left, 0px)) !important;
     right: max(8px, env(safe-area-inset-right, 0px)) !important;
     bottom: max(12px, calc(env(safe-area-inset-bottom, 0px) + 10px)) !important;
@@ -3322,6 +3323,7 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     background: rgba(245, 245, 240, 0.97) !important;
     border: 3px solid #0a0a0a !important;
     box-shadow: 6px 6px 0 #0a0a0a !important;
+    z-index: 200 !important;
   }
 
   body.design-digital .rail-nav::before { display: none !important; }
