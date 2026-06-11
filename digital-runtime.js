@@ -293,17 +293,21 @@ const cardShell = document.querySelector('.digital-container');
 
     const isMobile = window.matchMedia('(max-width: 920px)').matches;
 
-    // Clear any inline transform GSAP's card-in animation leaves behind.
-    // A transform (even scale(1)) on the container creates a stacking context
-    // that traps fixed-position children (the nav bar) inside the container.
+    // On mobile, the CSS card-in animation leaves an inline transform on
+    // .digital-container after it finishes. Any transform (even scale(1))
+    // creates a stacking context that traps position:fixed children (the nav).
+    // removeProperty first, then force 'none' with !important priority.
     if (cardShell) {
       const clearContainerTransform = () => {
         if (window.matchMedia('(max-width: 920px)').matches) {
-          cardShell.style.transform = 'none';
-          cardShell.style.animation = 'none';
+          cardShell.style.removeProperty('transform');
+          cardShell.style.removeProperty('animation');
+          cardShell.style.setProperty('transform', 'none', 'important');
         }
       };
-      // Run after the card-in animation finishes (~720ms)
+      // Run immediately, after short delay, and after animation completes
+      clearContainerTransform();
+      setTimeout(clearContainerTransform, 100);
       setTimeout(clearContainerTransform, 800);
       window.addEventListener('resize', clearContainerTransform);
     }
