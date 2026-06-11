@@ -1,4 +1,4 @@
-    const cardShell = document.querySelector('.digital-container');
+const cardShell = document.querySelector('.digital-container');
     const stage = document.getElementById('card-content-wrapper');
     const rotator = document.getElementById('sidebar-rotator');
     const cursor = document.getElementById('ui-cursor');
@@ -291,7 +291,24 @@
       });
     }
 
-    if (window.matchMedia('(hover: hover)').matches && cardShell) {
+    const isMobile = window.matchMedia('(max-width: 920px)').matches;
+
+    // Clear any inline transform GSAP's card-in animation leaves behind.
+    // A transform (even scale(1)) on the container creates a stacking context
+    // that traps fixed-position children (the nav bar) inside the container.
+    if (cardShell) {
+      const clearContainerTransform = () => {
+        if (window.matchMedia('(max-width: 920px)').matches) {
+          cardShell.style.transform = 'none';
+          cardShell.style.animation = 'none';
+        }
+      };
+      // Run after the card-in animation finishes (~720ms)
+      setTimeout(clearContainerTransform, 800);
+      window.addEventListener('resize', clearContainerTransform);
+    }
+
+    if (window.matchMedia('(hover: hover)').matches && !isMobile && cardShell) {
       const maxTilt = 1.8;
       cardShell.addEventListener('mousemove', (event) => {
         const rect = cardShell.getBoundingClientRect();
@@ -301,7 +318,7 @@
       });
 
       cardShell.addEventListener('mouseleave', () => {
-        cardShell.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+        cardShell.style.transform = '';
       });
     }
 
