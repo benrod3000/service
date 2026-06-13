@@ -507,7 +507,7 @@ function sectionTemplate(section) {
 
   if (section === 'portfolio') {
     return `
-      <article class="stage-card section-enter" data-section="portfolio" data-ghost="PORTFOLIO">
+      <article class="stage-card section-enter" data-section="portfolio" data-ghost="PORTFOLIO" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
         <div class="card-title-wrap">
           <span class="card-kicker">Concepts</span>
           <h3>Theory library for durable digital operation</h3>
@@ -532,39 +532,39 @@ function sectionTemplate(section) {
           </article>
         </div>
 
-        <section class="workflow-container animate" aria-label="Operating workflow schematic">
+        <section class="workflow-container animate" aria-label="Operating workflow schematic" style="display: block !important;">
           <div class="workflow-header">
             <h4>Operating Workflow</h4>
             <p>From raw signal to hardened system.</p>
           </div>
 
-          <ol class="workflow-track">
-            <li class="workflow-node animate">
+          <ol class="workflow-track" style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important;">
+            <li class="workflow-node animate" style="display: block !important;">
               <span class="workflow-meta">STEP 01</span>
               <h5>Signal Intake</h5>
               <p>Aggregating raw data, market sentiment, and brand objectives into a single source of truth.</p>
             </li>
-            <li class="workflow-node animate">
+            <li class="workflow-node animate" style="display: block !important;">
               <span class="workflow-meta">STEP 02</span>
               <h5>Diagnostic Mapping</h5>
               <p>Identifying systemic bottlenecks and friction points within the existing digital structure.</p>
             </li>
-            <li class="workflow-node animate">
+            <li class="workflow-node animate" style="display: block !important;">
               <span class="workflow-meta">STEP 03</span>
               <h5>System Architecture</h5>
               <p>Designing the durable framework and logic flows required to solve the identified friction.</p>
             </li>
-            <li class="workflow-node animate">
+            <li class="workflow-node animate" style="display: block !important;">
               <span class="workflow-meta">STEP 04</span>
               <h5>Multi Channel Execution</h5>
               <p>Deploying the architecture across relevant platforms with unified brand logic.</p>
             </li>
-            <li class="workflow-node animate">
+            <li class="workflow-node animate" style="display: block !important;">
               <span class="workflow-meta">STEP 05</span>
               <h5>Feedback Integration</h5>
               <p>Capturing real time performance data to refine the system responsiveness.</p>
             </li>
-            <li class="workflow-node animate">
+            <li class="workflow-node animate" style="display: block !important;">
               <span class="workflow-meta">STEP 06</span>
               <h5>Iterative Optimization</h5>
               <p>Hardening the system for long term retention and compounding growth.</p>
@@ -681,6 +681,11 @@ function mountSection(section) {
     }
 
     if (section === 'portfolio') {
+      // Force portfolio content to be visible
+      nextCard.style.display = 'block';
+      nextCard.style.visibility = 'visible';
+      nextCard.style.opacity = '1';
+      
       const workflowNodes = [...stage.querySelectorAll('.workflow-node')];
       if (workflowNodes.length) {
         let pulseIndex = 0;
@@ -691,8 +696,24 @@ function mountSection(section) {
           workflowNodes[pulseIndex].classList.add('is-live');
         }, 460);
       }
+      
+      // Force all portfolio children to be visible
+      setTimeout(() => {
+        const portfolioElements = nextCard.querySelectorAll('*');
+        portfolioElements.forEach(el => {
+          el.style.display = 'block';
+          el.style.visibility = 'visible';
+          el.style.opacity = '1';
+        });
+        // Fix grid display for workflow-track
+        const workflowTrack = nextCard.querySelector('.workflow-track');
+        if (workflowTrack) {
+          workflowTrack.style.display = 'grid';
+          workflowTrack.style.gridTemplateColumns = 'repeat(3, 1fr)';
+          workflowTrack.style.gap = '20px';
+        }
+      }, 50);
     }
-
   };
 
   if (!currentCard) {

@@ -3661,3 +3661,101 @@ img, video, iframe {
     gap: 16px !important;
   }
 }
+/* FIX: Portfolio content being hidden behind overlay */
+.workspace-body .stage-card[data-section="portfolio"] {
+  position: relative !important;
+  z-index: 10 !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+/* Ensure all portfolio content is above overlays */
+.workspace-body .stage-card[data-section="portfolio"] > * {
+  position: relative !important;
+  z-index: 20 !important;
+}
+
+/* Fix the workflow container display */
+.workspace-body .stage-card[data-section="portfolio"] .workflow-container {
+  display: block !important;
+  margin-top: 40px !important;
+  margin-bottom: 40px !important;
+  padding: 20px 0 !important;
+  position: relative !important;
+  z-index: 25 !important;
+}
+
+.workspace-body .stage-card[data-section="portfolio"] .workflow-track {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  list-style: none !important;
+  margin: 20px 0 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 25 !important;
+}
+
+.workspace-body .stage-card[data-section="portfolio"] .workflow-node {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  position: relative !important;
+  z-index: 30 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+}
+
+/* Fix the method cards and blog cards */
+.workspace-body .stage-card[data-section="portfolio"] .method-grid,
+.workspace-body .stage-card[data-section="portfolio"] .blog-grid {
+  position: relative !important;
+  z-index: 20 !important;
+}
+
+.workspace-body .stage-card[data-section="portfolio"] .method-card,
+.workspace-body .stage-card[data-section="portfolio"] .blog-card {
+  background: #ffffff !important;
+  position: relative !important;
+  z-index: 20 !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  border-radius: 8px !important;
+}
+
+/* Remove any pseudo-elements that might be covering content */
+.workspace-body .stage-card[data-section="portfolio"]::before,
+.workspace-body .stage-card[data-section="portfolio"]::after {
+  display: none !important;
+}
+
+/* Fix the workspace-body scrolling */
+.workspace-body {
+  overflow-y: auto !important;
+  overflow-x: visible !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Ensure the profile card doesn't overlay the portfolio content */
+.profile-card {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.digital-container {
+  position: relative !important;
+  z-index: 10 !important;
+  overflow: visible !important;
+}
+
+/* Mobile fix */
+@media (max-width: 920px) {
+  .workspace-body .stage-card[data-section="portfolio"] .workflow-track {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .workspace-body .stage-card[data-section="portfolio"] {
+    padding: 20px !important;
+  }
+}
