@@ -3594,3 +3594,298 @@ table, tbody, tr, td {
 .stage-card[data-section="portfolio"] {
   padding-top: 40px !important;
 }
+
+/* Fix large gap - remove ghost text spacing */
+.stage-card::before {
+  display: none !important;
+  content: none !important;
+}
+
+.stage-card {
+  padding-top: 30px !important;
+}
+/* Hide hamburger menu button on desktop only */
+@media (min-width: 921px) {
+  .radial-trigger {
+    display: none !important;
+  }
+}
+/* Brutalist contact input style */
+.brutalist-container {
+  position: relative;
+  width: 100%;
+  font-family: monospace;
+}
+
+.brutalist-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 4px solid #000;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 5px 5px 0 #000, 10px 10px 0 var(--accent);
+}
+
+.brutalist-input:focus {
+  animation: focus-pulse 4s infinite;
+}
+
+@keyframes focus-pulse {
+  0%, 100% { border-color: #000; }
+  50% { border-color: var(--accent); }
+}
+
+.brutalist-label {
+  position: absolute;
+  left: -3px;
+  top: -35px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
+  transform: rotate(-1deg);
+  z-index: 1;
+}
+
+.brutalist-input:focus + .brutalist-label {
+  transform: rotate(0deg) scale(1.05);
+  background-color: var(--accent);
+}
+/* Brutalist contact input style */
+.brutalist-container {
+  position: relative;
+  width: 100%;
+  font-family: monospace;
+}
+
+.brutalist-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 4px solid #000;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 5px 5px 0 #000, 10px 10px 0 var(--accent);
+}
+
+.brutalist-input:focus {
+  animation: focus-pulse 4s infinite;
+}
+
+@keyframes focus-pulse {
+  0%, 100% { border-color: #000; }
+  50% { border-color: var(--accent); }
+}
+
+.brutalist-label {
+  position: absolute;
+  left: -3px;
+  top: -35px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
+  transform: rotate(-1deg);
+  z-index: 1;
+}
+
+.brutalist-input:focus + .brutalist-label {
+  transform: rotate(0deg) scale(1.05);
+  background-color: var(--accent);
+}
+
+.brutalist-input::placeholder {
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.brutalist-input:focus::placeholder {
+  color: transparent;
+}
+
+/* ========== PROFILE IMAGE FIX - LARGER CIRCULAR AVATAR ========== */
+.profile-cover {
+  min-height: 180px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.profile-cover img {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 4px solid white !important;
+  margin-top: 20px !important;
+}
+
+.prof-photo-num, .prof-avatar {
+  display: none !important;
+}
+
+/* ========== TIGHTEN PROFILE CARD SPACING ========== */
+.profile-content {
+  padding: 16px 20px 12px 20px !important;
+}
+
+.prof-name {
+  margin-bottom: 4px !important;
+  font-size: 1.6rem !important;
+}
+
+.prof-bio {
+  margin-bottom: 12px !important;
+  padding-bottom: 8px !important;
+}
+
+.prof-stats {
+  margin-bottom: 12px !important;
+  gap: 6px !important;
+}
+
+.pstat {
+  padding: 6px 4px !important;
+}
+
+.psv {
+  font-size: 1.1rem !important;
+}
+
+.profile-cta {
+  padding: 10px 16px !important;
+  margin-bottom: 12px !important;
+}
+
+/* ========== HIDE HAMBURGER MENU ON DESKTOP ========== */
+@media (min-width: 921px) {
+  .radial-trigger {
+    display: none !important;
+  }
+}
+
+/* ========== REMOVE GHOST TEXT AND LARGE GAPS ========== */
+.stage-card::before {
+  display: none !important;
+  content: none !important;
+}
+
+.stage-card {
+  padding-top: 30px !important;
+}
+
+/* ========== PROFILE IMAGE FIX ========== */
+.profile-cover {
+  min-height: 180px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.profile-cover img {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 4px solid white !important;
+  margin-top: 20px !important;
+}
+
+.prof-photo-num, .prof-avatar {
+  display: none !important;
+}
+
+.profile-content {
+  padding: 16px 20px 12px 20px !important;
+}
+
+.prof-name {
+  margin-bottom: 4px !important;
+  font-size: 1.6rem !important;
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 921px) {
+  .radial-trigger {
+    display: none !important;
+  }
+}
+
+/* Remove ghost text gaps */
+.stage-card::before {
+  display: none !important;
+  content: none !important;
+}
+
+.stage-card {
+  padding-top: 30px !important;
+}
+
+/* Brutalist input styles */
+.brutalist-container {
+  position: relative;
+  width: 100%;
+  font-family: monospace;
+}
+
+.brutalist-input {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0 #000, 8px 8px 0 var(--accent);
+}
+
+.brutalist-input:focus {
+  animation: focus-pulse 4s infinite;
+}
+
+@keyframes focus-pulse {
+  0%, 100% { border-color: #000; }
+  50% { border-color: var(--accent); }
+}
+
+.brutalist-label {
+  position: absolute;
+  left: -3px;
+  top: -32px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+  padding: 4px 8px;
+  transform: rotate(-1deg);
+  z-index: 1;
+}
+
+.brutalist-input:focus + .brutalist-label {
+  transform: rotate(0deg) scale(1.05);
+  background-color: var(--accent);
+}
