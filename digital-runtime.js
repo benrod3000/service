@@ -681,15 +681,37 @@ function mountSection(section) {
     }
 
     if (section === 'portfolio') {
-      const workflowNodes = [...stage.querySelectorAll('.workflow-node')];
+      // Force portfolio content to be visible
+      nextCard.style.display = 'block';
+      nextCard.style.visibility = 'visible';
+      nextCard.style.opacity = '1';
+      
+      // Fix workflow track grid
+      setTimeout(() => {
+        const workflowTrack = nextCard.querySelector('.workflow-track');
+        if (workflowTrack) {
+          workflowTrack.style.display = 'grid';
+          workflowTrack.style.gridTemplateColumns = 'repeat(3, 1fr)';
+          workflowTrack.style.gap = '20px';
+        }
+      }, 10);
+      
+      // Start the step pulsing animation
+      const workflowNodes = [...nextCard.querySelectorAll('.workflow-node')];
       if (workflowNodes.length) {
+        // Clear any existing interval
+        if (workflowPulseInterval) clearInterval(workflowPulseInterval);
+        
+        // Remove any existing live classes
+        workflowNodes.forEach(node => node.classList.remove('is-live'));
+        
         let pulseIndex = 0;
         workflowNodes[0].classList.add('is-live');
-        workflowPulseInterval = window.setInterval(() => {
+        workflowPulseInterval = setInterval(() => {
           workflowNodes[pulseIndex].classList.remove('is-live');
           pulseIndex = (pulseIndex + 1) % workflowNodes.length;
           workflowNodes[pulseIndex].classList.add('is-live');
-        }, 460);
+        }, 800);
       }
     }
 
