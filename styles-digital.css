@@ -120,7 +120,7 @@ p {
   width: min(1140px, 100%);
   height: min(92dvh, 920px);
   display: grid;
-  grid-template-columns: 72px 340px minmax(0, 1fr);
+  grid-template-columns: auto 340px minmax(0, 1fr);
   column-gap: 18px;
   border: 1px solid rgba(132, 112, 94, 0.08);
   border-radius: var(--radius-lg);
@@ -145,7 +145,6 @@ p {
   grid-auto-flow: row;
   align-content: center;
   justify-items: center;
-  align-self: center;
   gap: 4px;
   padding: 6px 0;
   border: none;
@@ -153,10 +152,10 @@ p {
   box-shadow: none;
   width: fit-content;
   height: auto;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
   border-radius: 12px;
   z-index: 16;
+  position: relative;
 }
 
 .rail-main {
@@ -1548,6 +1547,7 @@ p {
   border-radius: 50%;
   top: 0;
   border: 2px solid var(--bg);
+}
 
 /* ======================
    GSAP ANIMATIONS
@@ -1562,7 +1562,6 @@ p {
 .blog-card.animate {
   opacity: 0;
   transform: translateY(30px);
-}
 }
 
 @media (min-width: 921px) {
@@ -1703,64 +1702,6 @@ p {
   border-top: 1px solid rgba(62, 48, 36, 0.2);
   border-bottom: 1px solid rgba(62, 48, 36, 0.12);
   padding: 18px 0 20px;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.workflow-track {
-  list-style: none;
-  margin: 14px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-
-.workflow-node {
-  position: relative;
-  border: 1px solid rgba(62, 48, 36, 0.14);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.18) 100%);
-  padding: 12px 12px 14px;
-  min-height: 185px;
-  overflow: visible;
-  display: block !important;
-}
-
-.workflow-meta {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: 0.66rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #b8941f;
-  font-weight: 700;
-}
-
-.workflow-node h5 {
-  margin: 0 0 7px;
-  font-size: 0.84rem;
-  line-height: 1.35;
-  letter-spacing: 0.02em !important;
-}
-
-.workflow-node p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.76rem;
-  line-height: 1.55;
-}
-
-.workflow-header h4 {
-  margin: 0 0 4px;
-  font-size: 0.95rem;
-}
-
-.workflow-header p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.8rem;
 }
 
 .workflow-track {
@@ -2637,7 +2578,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
    on tablets (681–920), plain bottom bar on phones (≤ 680).
    ============================================================ */
 @media (max-width: 920px) {
-  /* ----- Body ----- */
   body.design-digital {
     display: block;
     overflow: auto;
@@ -2645,19 +2585,14 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     min-height: 100dvh;
   }
 
-  /* ----- Ambient canvas ----- */
   .ambient-canvas {
     opacity: 0.62;
   }
 
-  /* ----- Shell vars ----- */
   :root {
     --shell-gutter: 14px;
   }
 
-  /* ----- Container ----- */
-  /* overflow:hidden + transform-style on the parent traps fixed children
-     (the nav) relative to the container, not the viewport. Clear both. */
   .digital-container {
     grid-template-columns: 1fr;
     height: auto;
@@ -2670,8 +2605,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     animation: none;
   }
 
-  /* ----- Brutalist card-profile: simple vertical stack ----- */
-  /* (Has .card-profile class — uses prof-photo/prof-body/prof-stats/profile-cta/profile-socials) */
   .card-profile {
     position: relative !important;
     top: auto !important;
@@ -2682,8 +2615,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     width: 100%;
   }
 
-  /* ----- Standard profile-card: horizontal strip ----- */
-  /* (Does NOT have .card-profile — uses profile-cover/profile-content children) */
   .profile-card:not(.card-profile) {
     position: relative;
     top: auto;
@@ -2806,7 +2737,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     min-height: 3.9em;
   }
 
-  /* Compact-on-scroll state (standard card only) */
   .profile-card:not(.card-profile),
   .profile-card:not(.card-profile) .profile-cover,
   .profile-card:not(.card-profile) .profile-content,
@@ -2870,11 +2800,9 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     display: none;
   }
 
-  /* ----- Workspace ----- */
   .workspace-card { height: auto; }
 
   .workspace-body {
-    /* bottom padding accounts for fixed nav bar (~80px) + safe area */
     padding: 32px 20px calc(96px + env(safe-area-inset-bottom, 0px)) 20px;
   }
 
@@ -2885,7 +2813,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     text-align: center;
   }
 
-  /* ----- Stage cards ----- */
   .stage-card {
     --ghost-size: clamp(44px, 14vw, 98px);
     --ghost-right: 14px;
@@ -2910,7 +2837,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     margin: 0 auto 60px;
   }
 
-  /* ----- Content grids — stack to single column ----- */
   .about-grid,
   .resume-layout,
   .stats-row,
@@ -2954,10 +2880,8 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     animation-name: workflow-link-mobile;
   }
 
-  /* ----- Hide desktop cursor ----- */
   .ui-cursor { display: none; }
 
-  /* ----- Rail nav: plain bottom bar (phone default, ≤ 680) ----- */
   .radial-trigger { display: none; }
 
   .rail-nav {
@@ -3056,7 +2980,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
 
 /* ============================================================
    RESPONSIVE — TABLET RADIAL NAV (681px – 920px)
-   Radial hamburger in top-right corner replaces bottom bar.
    ============================================================ */
 @media (min-width: 681px) and (max-width: 920px) {
   body.design-digital {
@@ -3087,7 +3010,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
   }
 
-  /* Quarter-circle backdrop veil */
   .rail-nav::before {
     content: "" !important;
     display: block !important;
@@ -3118,7 +3040,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     transform: translate(-50%, -50%) scale(1);
   }
 
-  /* Hamburger trigger */
   .radial-trigger {
     display: flex !important;
     flex-direction: column;
@@ -3157,7 +3078,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
   .rail-nav.is-open .radial-trigger-bar:nth-child(2) { opacity: 0; width: 0; }
   .rail-nav.is-open .radial-trigger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* Rail main: flex container centered over the trigger */
   .rail-main {
     position: relative;
     display: flex !important;
@@ -3169,7 +3089,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     gap: 0;
   }
 
-  /* Tabs hidden by default, fanned out when open */
   .rail-tab {
     position: absolute !important;
     left: calc(50% - 32px) !important;
@@ -3207,7 +3126,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
   }
 
-  /* Fan positions */
   .rail-nav.is-open .rail-tab:nth-child(2) {
     transform: translate(calc(-1 * var(--fan-r)), 0px) scale(1) !important;
     opacity: 1 !important; pointer-events: auto !important; transition-delay: 0ms !important;
@@ -3230,15 +3148,11 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
   }
 }
 
-/* Workflow connector mobile keyframe */
 @keyframes workflow-link-mobile {
   from { transform: scaleY(0); opacity: 0; }
   to   { transform: scaleY(1); opacity: 0.9; }
 }
 
-/* ============================================================
-   RESPONSIVE — DESKTOP BRUTALIST OVERRIDES (≥ 921px)
-   ============================================================ */
 @media (min-width: 921px) {
   body.design-digital .digital-container {
     grid-template-columns: max-content 340px minmax(0, 1fr);
@@ -3269,9 +3183,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
   }
 }
 
-/* ============================================================
-   BRUTALIST MOBILE OVERRIDES (≤ 920px, body.design-digital)
-   ============================================================ */
 @media (max-width: 920px) {
   body.design-digital .digital-container {
     grid-template-columns: 1fr !important;
@@ -3284,7 +3195,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     animation: none !important;
   }
 
-  /* Brutalist profile card mobile — explicit block flow, no grid columns */
   body.design-digital .card-profile {
     position: relative !important;
     top: auto !important;
@@ -3355,7 +3265,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
     padding-top: 6px;
   }
 
-  /* Brutalist rail nav — plain bottom bar */
   body.design-digital .rail-nav {
     position: fixed !important;
     left: max(8px, env(safe-area-inset-left, 0px)) !important;
@@ -3432,7 +3341,6 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
   }
 }
 
-/* Tablet radial nav for brutalist mode */
 @media (min-width: 681px) and (max-width: 920px) {
   body.design-digital .rail-nav {
     --fan-r: 116px;
@@ -3565,143 +3473,7 @@ body.design-digital .card-profile .profile-socials a:focus-visible {
   }
 }
 
-/* Ensure images are responsive globally */
 img, video, iframe {
   max-width: 100%;
   height: auto;
-}
-
-/* FIX: Show the flowchart on Concepts page */
-.stage-card[data-section="portfolio"] .workflow-container,
-.stage-card[data-section="portfolio"] .workflow-track,
-.stage-card[data-section="portfolio"] .workflow-node {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.stage-card[data-section="portfolio"] .workflow-track {
-  display: grid !important;
-}
-
-/* ============================================================
-   FIXES FOR MENU ISSUES
-   ============================================================ */
-
-/* Hide hamburger button on desktop */
-@media (min-width: 921px) {
-  .radial-trigger {
-    display: none !important;
-  }
-}
-
-/* Remove empty table behind menu */
-.rail-nav::before,
-.rail-nav::after,
-.rail-main::before,
-.rail-main::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Remove any table borders or backgrounds */
-.rail-nav,
-.rail-main,
-.rail-tab {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* ============================================================
-   FIXES FOR MENU ISSUES
-   ============================================================ */
-
-/* Hide hamburger button on desktop */
-@media (min-width: 921px) {
-  .radial-trigger {
-    display: none !important;
-  }
-}
-
-/* Remove empty table behind menu */
-.rail-nav::before,
-.rail-nav::after,
-.rail-main::before,
-.rail-main::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Remove any table borders or backgrounds */
-.rail-nav,
-.rail-main,
-.rail-tab {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Fix for the workflow display (your flowchart) */
-.stage-card[data-section="portfolio"] .workflow-container,
-.stage-card[data-section="portfolio"] .workflow-track,
-.stage-card[data-section="portfolio"] .workflow-node {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.stage-card[data-section="portfolio"] .workflow-track {
-  display: grid !important;
-}
-/* ========== FIXES ========== */
-
-/* 1. Hide the hamburger button on desktop */
-@media (min-width: 921px) {
-  .radial-trigger {
-    display: none !important;
-  }
-}
-
-/* 2. Hide the Cloudflare table/iframe causing the empty box */
-iframe[src*="cloudflareinsights"],
-iframe[src*="beacon"],
-.cloudflare-iframe,
-table:empty,
-tr:empty,
-td:empty {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
-  position: absolute !important;
-  pointer-events: none !important;
-}
-
-/* 3. Also hide any empty divs from Cloudflare */
-div[data-cf-beacon],
-script[src*="cloudflare"] {
-  display: none !important;
-}
-
-/* 4. Make sure the menu has no extra backgrounds */
-.rail-nav,
-.rail-main {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* 5. Show the flowchart on Concepts page */
-.stage-card[data-section="portfolio"] .workflow-container,
-.stage-card[data-section="portfolio"] .workflow-track,
-.stage-card[data-section="portfolio"] .workflow-node {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.stage-card[data-section="portfolio"] .workflow-track {
-  display: grid !important;
 }
