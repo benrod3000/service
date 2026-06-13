@@ -3477,3 +3477,120 @@ img, video, iframe {
   max-width: 100%;
   height: auto;
 }
+
+/* ========== FINAL FIXES - OVERRIDE EVERYTHING ========== */
+
+/* 1. Hide the hamburger button on desktop - FORCE HIDE */
+.radial-trigger {
+  display: none !important;
+}
+
+/* 2. Remove any empty table/box behind menu */
+.rail-nav::before,
+.rail-nav::after,
+.rail-main::before,
+.rail-main::after,
+.digital-container::before,
+.digital-container::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 3. Fix menu position - attached to left of vcard */
+.rail-nav {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  padding: 6px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: fit-content !important;
+  height: auto !important;
+}
+
+/* 4. Make sure the container allows proper spacing */
+.digital-container {
+  grid-template-columns: auto 340px minmax(0, 1fr) !important;
+  column-gap: 12px !important;
+  overflow: hidden !important;
+}
+
+/* 5. Remove any stray table elements */
+table, tbody, tr, td {
+  display: none !important;
+}
+
+/* 6. Show the flowchart on Concepts page */
+.stage-card[data-section="portfolio"] .workflow-container,
+.stage-card[data-section="portfolio"] .workflow-track,
+.stage-card[data-section="portfolio"] .workflow-node {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.stage-card[data-section="portfolio"] .workflow-track {
+  display: grid !important;
+}
+
+/* ========== FIX LARGE GAP ON CONCEPTS PAGE ========== */
+
+/* Remove large padding from stage cards */
+.stage-card {
+  padding-top: 40px !important;
+  padding-bottom: 60px !important;
+}
+
+/* Specifically fix the concepts/portfolio page */
+.stage-card[data-section="portfolio"] {
+  padding-top: 40px !important;
+  padding-bottom: 60px !important;
+}
+
+/* Remove the large ghost text spacing */
+.stage-card::before {
+  display: none !important;
+}
+
+/* Fix any extra margins on cards */
+.card-title-wrap {
+  margin-bottom: 20px !important;
+}
+
+.card-title-wrap h3 {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* ========== REMOVE LARGE GAP FROM GHOST TEXT ========== */
+
+/* Completely remove the ghost text element */
+.stage-card::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Reset padding on all stage cards to normal */
+.stage-card {
+  padding: 40px 40px 60px 40px !important;
+}
+
+/* Remove any extra top margin from first elements */
+.stage-card .card-title-wrap {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Reset the about page specific padding */
+.stage-card[data-section="about"] {
+  padding-top: 40px !important;
+}
+
+/* Reset the portfolio page specific padding */
+.stage-card[data-section="portfolio"] {
+  padding-top: 40px !important;
+}
