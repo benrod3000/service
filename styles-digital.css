@@ -352,6 +352,28 @@ p {
   z-index: 1;
 }
 
+.profile-cover svg,
+.profile-cover img {
+  position: relative;
+  z-index: 2;
+}
+
+.prof-status-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  background: #00e060;
+  border: 3px solid #0a0a0a;
+  box-shadow: 3px 3px 0 #0a0a0a;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  padding: 3px 8px;
+  text-transform: uppercase;
+  color: #0a0a0a;
+}
+
 .profile-cover::after {
   content: "";
   position: absolute;
@@ -2211,8 +2233,10 @@ body.design-digital .card-profile {
 }
 
 body.design-digital .card-profile .prof-photo {
-  height: 160px;
-  background: #f5e642 !important;
+  height: 210px;
+  background-image: url('images/background.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
   border-bottom: 5px solid #0a0a0a !important;
   position: relative;
   overflow: hidden;
@@ -3646,4 +3670,22 @@ img, video, iframe {
   margin-top: 4px !important;
   margin-bottom: 8px !important;
   padding-top: 4px !important;
+}
+/* Make background.png visible behind badge */
+.profile-cover {
+  background-image: url('images/background.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.profile-cover svg,
+.profile-cover img {
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+}
+
+.prof-status-badge {
+  background: #00e060 !important;
+  border: 3px solid #0a0a0a !important;
+  color: #0a0a0a !important;
 }
