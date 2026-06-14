@@ -1707,9 +1707,9 @@ p {
   list-style: none;
   margin: 14px 0 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
 }
 
 .workflow-node {
@@ -3563,60 +3563,6 @@ img, video, iframe {
   height: auto;
 }
 
-/* Final cleanup for workflow grid */
-.workflow-container {
-  display: block !important;
-  margin-top: 40px !important;
-  margin-bottom: 40px !important;
-  border-top: 1px solid rgba(62, 48, 36, 0.2) !important;
-  border-bottom: 1px solid rgba(62, 48, 36, 0.12) !important;
-  padding: 20px 0 !important;
-}
-
-.workflow-node {
-  display: block !important;
-  border: 1px solid rgba(0,0,0,0.1) !important;
-  background: #f9f9f9 !important;
-  padding: 20px !important;
-  border-radius: 12px !important;
-}
-
-.workflow-meta {
-  display: block !important;
-  color: #b8941f !important;
-  font-size: 12px !important;
-  font-weight: bold !important;
-  margin-bottom: 10px !important;
-  font-family: monospace !important;
-}
-
-.workflow-node h5 {
-  display: block !important;
-  font-size: 16px !important;
-  margin: 0 0 10px 0 !important;
-  font-weight: 600 !important;
-}
-
-.workflow-node p {
-  display: block !important;
-  font-size: 13px !important;
-  color: #666 !important;
-  margin: 0 !important;
-  line-height: 1.5 !important;
-}
-
-.stage-card[data-section="portfolio"] .workflow-track {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 20px !important;
-}
-
-@media (max-width: 920px) {
-  .stage-card[data-section="portfolio"] .workflow-track {
-    grid-template-columns: 1fr !important;
-  }
-}
-
 .profile-cover img {
   position: relative !important;
   top: auto !important;
@@ -3646,4 +3592,58 @@ img, video, iframe {
 
 .stage-card {
   padding-top: 30px !important;
+}
+/* Remove empty space below profile image */
+.profile-card {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+}
+
+.profile-cover {
+  min-height: auto !important;
+  padding-bottom: 0 !important;
+}
+
+.profile-cover svg,
+.profile-cover img {
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.prof-body {
+  padding-top: 8px !important;
+  padding-bottom: 0 !important;
+}
+
+.prof-handle {
+  margin-bottom: 2px !important;
+}
+
+.prof-name {
+  margin-bottom: 4px !important;
+  line-height: 1 !important;
+}
+
+.prof-bio {
+  margin-bottom: 8px !important;
+}
+
+.prof-stats {
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
+  padding: 6px 0 !important;
+}
+
+.pstat {
+  padding: 6px 4px !important;
+}
+
+.profile-cta {
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+}
+
+.profile-socials {
+  margin-top: 4px !important;
+  margin-bottom: 8px !important;
+  padding-top: 4px !important;
 }
