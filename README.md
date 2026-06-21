@@ -1,3 +1,4 @@
+```markdown
 # Service Site
 
 Standalone resume and case study site for Ben Rodriguez, focused on growth systems, audience ownership, and digital marketing execution.
@@ -5,6 +6,21 @@ Standalone resume and case study site for Ben Rodriguez, focused on growth syste
 ## Live Site
 
 - Live site: https://brod3000.com/
+
+## Sitemap
+
+The sitemap is available at:
+- https://brod3000.com/sitemap.xml
+
+### Maintaining the Sitemap
+
+The sitemap is a manually maintained XML file in the root directory. When adding new pages:
+
+1. Add a new `<url>` entry for each new page
+2. Update the `<lastmod>` date for changed pages to today's date
+3. Submit the updated sitemap to [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters)
+
+Current sitemap includes the homepage. Expand as new content is added.
 
 ## Project Structure
 
@@ -15,6 +31,7 @@ Standalone resume and case study site for Ben Rodriguez, focused on growth syste
 - `styles.css` - Legacy classic page styling
 - `script.js` - Legacy classic page interactions and version toggle behavior
 - `images/` - Profile and visual assets
+- `sitemap.xml` - XML sitemap for search engine indexing
 
 ## Local Development
 
@@ -63,20 +80,21 @@ git push origin main
 - Keep `index-classic.html` as archive only content; avoid adding new features there.
 - Keep animations performant by preferring `transform` and `opacity` transitions.
 
-## Temporary Cache Busting
+## Cache Busting
 
-Temporary query string cache busting is currently enabled for local assets using:
+Query string cache busting is currently enabled for local assets using:
 
-- `styles-digital.css?v=20260512-2`
+- `styles-digital.css?v=20260621`
 
-This was added to reduce stale GitHub Pages browser cache issues after rapid updates.
+This helps reduce stale GitHub Pages browser cache issues during active development.
 
-When to remove it:
+### When to remove it:
 
 1. After the UI is stable and no longer changing frequently.
 2. After confirming users consistently see fresh updates without hard refresh.
 
-How to remove it:
+### How to remove it:
 
 1. Remove query string versions from local asset URLs in `index.html` once cache behavior is stable.
 2. Commit and push one cleanup commit.
+```
