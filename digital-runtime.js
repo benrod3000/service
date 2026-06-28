@@ -1,7 +1,13 @@
 const cardShell = document.querySelector('.digital-container');
-const wrapper = document.getElementById('card-content-wrapper');
-if (wrapper) wrapper.classList.add('has-js-content');
 const stage = document.getElementById('card-content-wrapper');
+
+// If the wrapper is missing, log an error and stop.
+if (!stage) {
+  console.error('Main content wrapper (#card-content-wrapper) not found.');
+} else {
+  console.log('Main content wrapper found. Proceeding with dynamic content.');
+}
+
 const rotator = document.getElementById('sidebar-rotator');
 const cursor = document.getElementById('ui-cursor');
 const ambientCanvas = document.getElementById('ambient-canvas');
@@ -726,6 +732,7 @@ function mountSection(section) {
   const nextCard = getSectionCard(section);
 
   if (!nextCard) {
+    console.error(`Failed to get section card for: ${section}`);
     return;
   }
 
@@ -850,7 +857,12 @@ if (radialTrigger && railNav) {
   });
 }
 
-mountSection('about');
+// Mount the initial section with error handling
+try {
+  mountSection('about');
+} catch (err) {
+  console.error('Failed to mount initial section:', err);
+}
 
 if (profileCard && stage) {
   stage.addEventListener('scroll', syncMobileProfileCompaction, { passive: true });

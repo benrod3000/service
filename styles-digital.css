@@ -3810,10 +3810,6 @@ img, video, iframe {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-/* Hide fallback when JS replaces it */
-.workspace-body.has-js-content .fallback-content {
-  display: none !important;
-}
 /* Noscript fallback */
 .noscript-fallback {
   padding: 32px 40px 60px 40px;
@@ -3877,6 +3873,13 @@ img, video, iframe {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 920px) {
+  .workspace-body p,
+  .stage-card p {
+    font-size: 1rem;
+  }
+}
+/* ===== MOBILE FONT SIZE ADJUSTMENT ===== */
 @media (max-width: 920px) {
   .workspace-body p,
   .stage-card p {
