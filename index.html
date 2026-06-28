@@ -21,31 +21,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X42B535184"></script>
-  <script src="gtag-init.js?v=1"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles-digital.css?v=64">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous"></script>
-  <!-- <script src="script.js?v=15" defer></script> -->
-  <script src="digital-runtime.js?v=8" defer></script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Ben Rodriguez",
-      "url": "https://brod3000.com/",
-      "jobTitle": "Digital Marketing Manager",
-      "description": "Growth systems, strategy, and audience ownership infrastructure.",
-      "image": "https://brod3000.com/images/profile.jpg",
-      "sameAs": [
-        "https://github.com/benrod3000",
-        "https://www.reddit.com/user/benrod1/"
-      ]
-    }
-  </script>
 
-  <!-- ===== FALLBACK STYLES (inlined so they work even if external CSS fails) ===== -->
+  <!-- Google Analytics (Rocket Loader will leave this alone with data-cfasync="false") -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X42B535184" data-cfasync="false"></script>
+  <script src="gtag-init.js?v=1" data-cfasync="false"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="styles-digital.css?v=64">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" data-cfasync="false"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" data-cfasync="false"></script>
+
+  <!-- Main scripts – Rocket Loader will NOT defer these -->
+  <script src="script.js?v=15" defer data-cfasync="false"></script>
+  <script src="digital-runtime.js?v=8" defer data-cfasync="false"></script>
+
+  <!-- Inline fallback styles (in case external CSS fails) -->
   <style>
     /* --- Fallback content (shown when JS fails) --- */
     .workspace-body .fallback-content {
@@ -99,10 +94,6 @@
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-    }
-    /* Hide fallback when JS replaces it */
-    .workspace-body.has-js-content .fallback-content {
-      display: none !important;
     }
 
     /* --- Noscript fallback --- */
@@ -170,6 +161,22 @@
       }
     }
   </style>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ben Rodriguez",
+      "url": "https://brod3000.com/",
+      "jobTitle": "Digital Marketing Manager",
+      "description": "Growth systems, strategy, and audience ownership infrastructure.",
+      "image": "https://brod3000.com/images/profile.jpg",
+      "sameAs": [
+        "https://github.com/benrod3000",
+        "https://www.reddit.com/user/benrod1/"
+      ]
+    }
+  </script>
 </head>
 <body class="design-digital">
   <div class="ambient-bg" aria-hidden="true"></div>
@@ -255,7 +262,7 @@
         <div class="pstat"><span class="psv">3x</span><span class="psl">Avg ROAS</span></div>
       </div>
 
-      <!-- ✅ Fixed: removed stray whitespace between <a> and <span> -->
+      <!-- Cleaned CTA (no stray whitespace) -->
       <a class="profile-cta cta" href="images/ben_rodriguez_resume_2026.pdf" target="_blank" rel="noopener noreferrer" aria-label="📄 Resume"><span class="span">📄 Resume</span>
         <span class="second" aria-hidden="true">
           <svg width="50" height="20" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
@@ -294,8 +301,7 @@
       <!--
       ============================================================
       FALLBACK CONTENT — shown when JavaScript fails to load or run.
-      The .fallback-content div is hidden by JS once the dynamic
-      content mounts. If JS never runs, this content stays visible.
+      The .fallback-content div is kept visible until JS replaces it.
       ============================================================
       -->
       <section class="workspace-body" id="card-content-wrapper" aria-live="polite">
@@ -321,8 +327,6 @@
   <!--
   ============================================================
   NOSCRIPT FALLBACK — shown when JavaScript is completely disabled.
-  This duplicates the fallback content above but inside <noscript>
-  so it only appears when JS is off.
   ============================================================
   -->
   <noscript>
