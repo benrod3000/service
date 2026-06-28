@@ -1,4 +1,6 @@
 const cardShell = document.querySelector('.digital-container');
+const wrapper = document.getElementById('card-content-wrapper');
+if (wrapper) wrapper.classList.add('has-js-content');
 const stage = document.getElementById('card-content-wrapper');
 const rotator = document.getElementById('sidebar-rotator');
 const cursor = document.getElementById('ui-cursor');

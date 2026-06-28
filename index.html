@@ -30,20 +30,146 @@
   <script src="script.js?v=15" defer></script>
   <script src="digital-runtime.js?v=8" defer></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ben Rodriguez",
-    "url": "https://brod3000.com/",
-    "jobTitle": "Digital Marketing Manager",
-    "description": "Growth systems, strategy, and audience ownership infrastructure.",
-    "image": "https://brod3000.com/images/profile.jpg",
-    "sameAs": [
-      "https://github.com/benrod3000",
-      "https://www.reddit.com/user/benrod1/"
-    ]
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ben Rodriguez",
+      "url": "https://brod3000.com/",
+      "jobTitle": "Digital Marketing Manager",
+      "description": "Growth systems, strategy, and audience ownership infrastructure.",
+      "image": "https://brod3000.com/images/profile.jpg",
+      "sameAs": [
+        "https://github.com/benrod3000",
+        "https://www.reddit.com/user/benrod1/"
+      ]
+    }
   </script>
+
+  <!-- ===== FALLBACK STYLES (inlined so they work even if external CSS fails) ===== -->
+  <style>
+    /* --- Fallback content (shown when JS fails) --- */
+    .workspace-body .fallback-content {
+      padding: 32px 40px 60px 40px;
+      max-width: 820px;
+    }
+    .workspace-body .fallback-content .card-kicker {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(86, 129, 106, 0.11);
+      color: #2c7a5e;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .workspace-body .fallback-content h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin: 16px 0 14px;
+      color: #1e1a16;
+    }
+    .workspace-body .fallback-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2c2621;
+      margin-bottom: 16px;
+    }
+    .workspace-body .fallback-content .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .workspace-body .fallback-content .stat-pill {
+      border-bottom: 1px solid rgba(62, 48, 36, 0.12);
+      padding: 16px 0;
+      text-align: center;
+    }
+    .workspace-body .fallback-content .stat-pill strong {
+      display: block;
+      color: #2c7a5e;
+      font-size: 1.5rem;
+    }
+    .workspace-body .fallback-content .stat-pill span {
+      color: #6b635a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    /* Hide fallback when JS replaces it */
+    .workspace-body.has-js-content .fallback-content {
+      display: none !important;
+    }
+
+    /* --- Noscript fallback --- */
+    .noscript-fallback {
+      padding: 32px 40px 60px 40px;
+      max-width: 820px;
+      background: #ffffff;
+    }
+    .noscript-fallback .card-kicker {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(86, 129, 106, 0.11);
+      color: #2c7a5e;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .noscript-fallback h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin: 16px 0 14px;
+      color: #1e1a16;
+    }
+    .noscript-fallback p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2c2621;
+      margin-bottom: 16px;
+    }
+    .noscript-fallback .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .noscript-fallback .stat-pill {
+      border-bottom: 1px solid rgba(62, 48, 36, 0.12);
+      padding: 16px 0;
+      text-align: center;
+    }
+    .noscript-fallback .stat-pill strong {
+      display: block;
+      color: #2c7a5e;
+      font-size: 1.5rem;
+    }
+    .noscript-fallback .stat-pill span {
+      color: #6b635a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 920px) {
+      .workspace-body .fallback-content,
+      .noscript-fallback {
+        padding: 32px 20px 60px 20px;
+      }
+      .workspace-body .fallback-content .stats-row,
+      .noscript-fallback .stats-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body class="design-digital">
   <div class="ambient-bg" aria-hidden="true"></div>
@@ -52,7 +178,7 @@
   <div class="ui-cursor" id="ui-cursor" aria-hidden="true"></div>
 
   <div class="digital-container">
-    <!-- Nav moved INSIDE container for desktop positioning -->
+    <!-- Navigation -->
     <nav class="rail-nav" aria-label="Section navigation">
       <div class="rail-main">
         <button class="radial-trigger" aria-label="Open navigation" aria-expanded="false">
@@ -107,6 +233,7 @@
       </div>
     </nav>
 
+    <!-- Profile Card -->
     <aside class="profile-card card-profile" aria-label="Profile panel">
       <div class="prof-photo profile-cover">
         <div class="img-spinner" aria-hidden="true"></div>
@@ -127,7 +254,9 @@
         <div class="pstat"><span class="psv">20+</span><span class="psl">Campaigns</span></div>
         <div class="pstat"><span class="psv">3x</span><span class="psl">Avg ROAS</span></div>
       </div>
-<a class="profile-cta cta" href="images/ben_rodriguez_resume_2026.pdf" target="_blank" rel="noopener noreferrer" aria-label="📄 Resume">        <span class="span">📄 Resume</span>
+
+      <!-- ✅ Fixed: removed stray whitespace between <a> and <span> -->
+      <a class="profile-cta cta" href="images/ben_rodriguez_resume_2026.pdf" target="_blank" rel="noopener noreferrer" aria-label="📄 Resume"><span class="span">📄 Resume</span>
         <span class="second" aria-hidden="true">
           <svg width="50" height="20" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
             <path class="one" d="M40.154 3.895L43.976.139a.36.36 0 0 1 .701 0l21.014 20.646a1 1 0 0 1 0 1.427L44.677 42.861a.36.36 0 0 1-.701 0l-3.822-3.754a.5.5 0 0 1 0-.707l16.84-16.537a.5.5 0 0 0 0-.713L40.154 4.608a.5.5 0 0 1 0-.713z" fill="currentColor"/>
@@ -153,6 +282,7 @@
       </div>
     </aside>
 
+    <!-- Main Workspace -->
     <main class="workspace-card">
       <header class="workspace-header">
         <div class="workspace-brand">
@@ -161,8 +291,58 @@
         <a href="index-classic.html" class="workspace-back">View Classic Site</a>
       </header>
 
-      <section class="workspace-body" id="card-content-wrapper" aria-live="polite"></section>
+      <!--
+      ============================================================
+      FALLBACK CONTENT — shown when JavaScript fails to load or run.
+      The .fallback-content div is hidden by JS once the dynamic
+      content mounts. If JS never runs, this content stays visible.
+      ============================================================
+      -->
+      <section class="workspace-body" id="card-content-wrapper" aria-live="polite">
+        <div class="fallback-content">
+          <span class="card-kicker">About</span>
+          <h2>I build systems for growth.</h2>
+          <p><strong>Systems first growth architecture</strong> demands a move away from "growth hacks" toward durable, high leverage digital structures.</p>
+          <p><strong>Complexity requires clarity</strong> when managing multi channel campaigns; we solve for the bottleneck before we solve for the volume.</p>
+          <p><strong>Engineered for scale</strong> is how I approach every campaign, ensuring that the infrastructure can support the ambition.</p>
+          <div class="stats-row">
+            <div class="stat-pill"><strong>11+</strong><span>Years in Talent Management</span></div>
+            <div class="stat-pill"><strong>20+</strong><span>Campaigns Launched</span></div>
+            <div class="stat-pill"><strong>3x</strong><span>Average Return on Ad Spend</span></div>
+          </div>
+          <p style="margin-top:24px;font-size:0.85rem;color:#6b635a;">
+            <em>JavaScript is disabled or failed to load. The full interactive experience requires JavaScript.</em>
+          </p>
+        </div>
+      </section>
     </main>
   </div>
+
+  <!--
+  ============================================================
+  NOSCRIPT FALLBACK — shown when JavaScript is completely disabled.
+  This duplicates the fallback content above but inside <noscript>
+  so it only appears when JS is off.
+  ============================================================
+  -->
+  <noscript>
+    <div class="workspace-body" style="padding:0;">
+      <div class="noscript-fallback">
+        <span class="card-kicker">About</span>
+        <h2>I build systems for growth.</h2>
+        <p><strong>Systems first growth architecture</strong> demands a move away from "growth hacks" toward durable, high leverage digital structures.</p>
+        <p><strong>Complexity requires clarity</strong> when managing multi channel campaigns; we solve for the bottleneck before we solve for the volume.</p>
+        <p><strong>Engineered for scale</strong> is how I approach every campaign, ensuring that the infrastructure can support the ambition.</p>
+        <div class="stats-row">
+          <div class="stat-pill"><strong>11+</strong><span>Years in Talent Management</span></div>
+          <div class="stat-pill"><strong>20+</strong><span>Campaigns Launched</span></div>
+          <div class="stat-pill"><strong>3x</strong><span>Average Return on Ad Spend</span></div>
+        </div>
+        <p style="margin-top:24px;font-size:0.85rem;color:#6b635a;">
+          <em>JavaScript is disabled. Enable JavaScript for the full interactive experience.</em>
+        </p>
+      </div>
+    </div>
+  </noscript>
 </body>
 </html>
