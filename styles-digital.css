@@ -3877,3 +3877,9 @@ img, video, iframe {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 920px) {
+  .workspace-body p,
+  .stage-card p {
+    font-size: 1rem;
+  }
+}

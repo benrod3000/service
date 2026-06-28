@@ -398,7 +398,9 @@ if (cursor && window.matchMedia('(hover: hover)').matches) {
   bindCursorTargets();
 }
 
+// Rotator with null guard
 setInterval(() => {
+  if (!rotator) return;
   phraseIndex = (phraseIndex + 1) % phrases.length;
   rotator.textContent = phrases[phraseIndex];
 }, 2600);
@@ -468,30 +470,30 @@ function sectionTemplate(section) {
             </div>
           </div>
           <div class="resume-column">
-  <h4 class="resume-heading">Certifications</h4>
-  <div class="timeline-list">
-    <article class="timeline-item">
-      <span class="timeline-date">2019</span>
-      <h5>Facebook Blueprint Certification</h5>
-      <p>Platform expertise, ad buying, measurement, and compliance for paid social campaigns.</p>
-    </article>
-    <article class="timeline-item">
-      <span class="timeline-date">2017</span>
-      <h5>Twitter Flight School</h5>
-      <p>Certification in Twitter ads, audience targeting, and campaign optimization strategies.</p>
-    </article>
-    <article class="timeline-item">
-      <span class="timeline-date">2016</span>
-      <h5>YouTube Certified</h5>
-      <p>Video advertising, audience growth, and content strategy for the YouTube platform.</p>
-    </article>
-    <article class="timeline-item">
-      <span class="timeline-date">Current</span>
-      <h5>AWS Cloud Practitioner (In Progress)</h5>
-      <p>Specializing in ECS (Elastic Container Service) and SNS (Simple Notification Service) for scalable marketing infrastructure.</p>
-    </article>
-  </div>
-</div>
+            <h4 class="resume-heading">Certifications</h4>
+            <div class="timeline-list">
+              <article class="timeline-item">
+                <span class="timeline-date">2019</span>
+                <h5>Facebook Blueprint Certification</h5>
+                <p>Platform expertise, ad buying, measurement, and compliance for paid social campaigns.</p>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-date">2017</span>
+                <h5>Twitter Flight School</h5>
+                <p>Certification in Twitter ads, audience targeting, and campaign optimization strategies.</p>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-date">2016</span>
+                <h5>YouTube Certified</h5>
+                <p>Video advertising, audience growth, and content strategy for the YouTube platform.</p>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-date">Current</span>
+                <h5>AWS Cloud Practitioner (In Progress)</h5>
+                <p>Specializing in ECS (Elastic Container Service) and SNS (Simple Notification Service) for scalable marketing infrastructure.</p>
+              </article>
+            </div>
+          </div>
         </div>
 
         <div class="service-grid">
@@ -703,6 +705,7 @@ function getSectionCard(section) {
 }
 
 function mountSection(section) {
+  // Clear any pending workflow pulse when leaving any section
   if (workflowPulseInterval) {
     window.clearInterval(workflowPulseInterval);
     workflowPulseInterval = null;
@@ -753,9 +756,6 @@ function mountSection(section) {
       // Start the step pulsing animation
       const workflowNodes = [...nextCard.querySelectorAll('.workflow-node')];
       if (workflowNodes.length) {
-        // Clear any existing interval
-        if (workflowPulseInterval) clearInterval(workflowPulseInterval);
-        
         // Remove any existing live classes
         workflowNodes.forEach(node => node.classList.remove('is-live'));
         
@@ -768,7 +768,6 @@ function mountSection(section) {
         }, 800);
       }
     }
-
   };
 
   if (!currentCard) {
