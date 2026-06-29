@@ -18,7 +18,6 @@ The sitemap is a manually maintained XML file in the root directory. When adding
 
 1. Add a new `<url>` entry for each new page
 2. Update the `<lastmod>` date for changed pages to today's date
-3. Submit the updated sitemap to [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters)
 
 Current sitemap includes the homepage. Expand as new content is added.
 
@@ -77,7 +76,6 @@ git push origin main
 ## Notes
 
 - Keep copy and metadata in `index.html` aligned.
-- Keep `index-classic.html` as archive only content; avoid adding new features there.
 - Keep animations performant by preferring `transform` and `opacity` transitions.
 
 ## Cache Busting
