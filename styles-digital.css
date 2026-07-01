@@ -651,10 +651,13 @@ p {
   z-index: 0;
 }
 
-.profile-socials a i {
+.profile-socials a svg {
   position: relative;
   z-index: 1;
-  text-shadow: 0 1px 0 rgba(5, 14, 28, 0.8);
+  color: inherit;
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .profile-socials a:focus-visible {
